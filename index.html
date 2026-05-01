@@ -592,7 +592,7 @@
       font-weight: 300;
     }
 
-    /* ── download section (merged) ───────────────────────── */
+    /* ── download section ────────────────────────────────── */
     .download-box {
       background: var(--ink-2);
       padding: 25px;
@@ -739,7 +739,7 @@
       text-decoration: none;
     }
 
-    /* ── install section ─────────────────────────────────── */
+    /* ── install section ─────────────────────────────────-- */
     .install-card {
       background: var(--ink-3);
       border: 1px solid var(--border);
@@ -805,6 +805,38 @@
       font-family: var(--mono);
     }
     .copy-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── disclaimer ──────────────────────────────────────── */
+    .disclaimer {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: rgba(0,0,0,0.2);
+      padding: 24px 48px;
+      font-size: 13px;
+    }
+    .disclaimer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .disclaimer-icon {
+      font-size: 28px;
+      opacity: 0.7;
+    }
+    .disclaimer-text {
+      color: var(--white-2);
+      line-height: 1.6;
+    }
+    .disclaimer-text strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    @media (max-width: 700px) {
+      .disclaimer { padding: 20px 24px; }
+    }
 
     /* ── footer ──────────────────────────────────────────── */
     footer {
@@ -1063,22 +1095,15 @@
   </div>
 </section>
 
-<!-- ── DOWNLOAD SECTION (merged from plugins) ─────────────── -->
+<!-- ── DOWNLOAD SECTION ───────────────────────────────────── -->
 <section id="download">
   <div class="section-inner">
     <p class="section-tag reveal">Download</p>
     <h2 class="section-title reveal">Get A++ for your machine.</h2>
     <p class="section-sub reveal">Choose the version that fits your needs. All releases are MIT licensed.</p>
-
-    <!-- Recommended (dynamic) -->
-    <div id="recommended-box" class="download-box recommended" style="display: none;">
-      <!-- filled by script -->
-    </div>
-
-    <!-- All versions list -->
+    <div id="recommended-box" class="download-box recommended" style="display: none;"><!-- filled by script --></div>
     <h3 style="margin-top: 40px;">📦 All Versions</h3>
     <div id="versions-list" class="versions-list"></div>
-
     <p style="margin-top: 24px; font-size: 13px; color: var(--muted);">⬇️ All downloads are <code>.zip</code> archives containing the full interpreter and documentation.</p>
   </div>
 </section>
@@ -1099,6 +1124,19 @@
     </div>
   </div>
 </section>
+
+<!-- ── DISCLAIMER ──────────────────────────────────────────── -->
+<div class="disclaimer">
+  <div class="disclaimer-inner">
+    <div class="disclaimer-icon">⚠️</div>
+    <div class="disclaimer-text">
+      <strong>Free & Open Source Software — Prototype Release</strong><br>
+      A++ is primarily thought and designed by <strong>Vishnu Theertha</strong> from Bengaluru, India.<br>
+      This software has been tested only in: Python shell version <strong>3.13</strong> and command line (cmd) on a <strong>Dell laptop (Intel i3 11th Gen, 8GB RAM, Windows 11 Pro 25H2)</strong>.<br>
+      <strong>Please note:</strong> A++ is still a <strong>prototype</strong> and may not be fully ready for production use. It may contain bugs, incomplete features, or unexpected behavior. Use it for learning and experimentation.
+    </div>
+  </div>
+</div>
 
 <!-- ── FOOTER ──────────────────────────────────────────────── -->
 <footer>
@@ -1130,7 +1168,7 @@
     tabs.forEach((t, i) => t.classList.toggle('active', i === idx));
   }
   tabs.forEach((tab, idx) => tab.addEventListener('click', () => showTab(idx)));
-  showTab(0); // default
+  showTab(0);
 
   // Copy command
   function copyCmd(id) {
@@ -1150,34 +1188,25 @@
     if (cmdId) btn.addEventListener('click', () => copyCmd(cmdId));
   });
 
-  // ── AUTO DOWNLOAD SYSTEM ─────────────────────────────────
-  // EDIT THIS LIST to add/remove versions
+  // Auto download system
   const files = [
     "aplus-recommended-v1.3.0.zip",
     "aplus-latest-v1.3.0.zip",
     "aplus-v1.1.0.zip",
     "aplus-v1.0.0.zip"
   ];
-
   const recBox = document.getElementById("recommended-box");
   const listBox = document.getElementById("versions-list");
   listBox.innerHTML = '';
-
   for (const file of files) {
     const url = "downloads/" + file;
     const isRecommended = file.includes("recommended");
     const isLatest = file.includes("latest");
     const version = file.replace(".zip", "").split("-").pop();
-
     if (isRecommended) {
       recBox.style.display = 'block';
-      recBox.innerHTML = `
-        <h3>🚀 Recommended Version</h3>
-        <p><strong>${version}</strong><br><span style="font-size:13px; color:var(--white-2);">Stable, fully tested, best for beginners.</span></p>
-        <a href="${url}" download class="btn-download">Download ${version}</a>
-      `;
+      recBox.innerHTML = `<h3>🚀 Recommended Version</h3><p><strong>${version}</strong><br><span style="font-size:13px; color:var(--white-2);">Stable, fully tested, best for beginners.</span></p><a href="${url}" download class="btn-download">Download ${version}</a>`;
     }
-
     const div = document.createElement('div');
     div.className = "version-item" + (isLatest ? " latest" : "");
     div.innerHTML = `<span>${version} ${isLatest ? '(Latest)' : ''}</span><a href="${url}" download>Download</a>`;
