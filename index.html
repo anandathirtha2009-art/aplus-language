@@ -113,7 +113,6 @@
       overflow: hidden;
     }
 
-    /* radial glow blobs */
     .blob {
       position: absolute;
       border-radius: 50%;
@@ -295,14 +294,13 @@
     }
 
     /* syntax colours */
-    .kw  { color: #4af0c4; font-weight: 500; }   /* keywords  */
-    .str { color: #f0c674; }                       /* strings   */
-    .num { color: #f97316; }                       /* numbers   */
-    .cm  { color: #4a5a6e; font-style: italic; }  /* comments  */
-    .fn  { color: #38bdf8; }                       /* functions */
-    .op  { color: #a78bfa; }                       /* operators */
+    .kw  { color: #4af0c4; font-weight: 500; }
+    .str { color: #f0c674; }
+    .num { color: #f97316; }
+    .cm  { color: #4a5a6e; font-style: italic; }
+    .fn  { color: #38bdf8; }
+    .op  { color: #a78bfa; }
 
-    /* cursor blink on last line */
     .cursor {
       display: inline-block;
       width: 2px;
@@ -594,6 +592,53 @@
       font-weight: 300;
     }
 
+    /* ── download section (merged) ───────────────────────── */
+    .download-box {
+      background: var(--ink-2);
+      padding: 25px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      margin-top: 20px;
+    }
+    .recommended {
+      border: 1px solid var(--accent);
+    }
+    .btn-download {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 18px;
+      background: var(--accent);
+      color: var(--ink);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-family: var(--display);
+      transition: opacity 0.2s;
+    }
+    .btn-download:hover { opacity: 0.85; }
+    .versions-list {
+      margin-top: 20px;
+    }
+    .version-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      background: var(--ink-3);
+      border-radius: 10px;
+      margin-bottom: 12px;
+      border: 1px solid var(--border);
+    }
+    .version-item.latest {
+      border-color: var(--accent);
+    }
+    .version-item a {
+      color: var(--accent);
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: 14px;
+    }
+
     /* ── author ──────────────────────────────────────────── */
     #author {
       background: var(--ink-2);
@@ -768,7 +813,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: gap;
+      flex-wrap: wrap;
       gap: 20px;
     }
     .footer-left {
@@ -822,6 +867,7 @@
     <li><a href="#syntax">Syntax</a></li>
     <li><a href="#iece">IECE</a></li>
     <li><a href="#compare">Compare</a></li>
+    <li><a href="#download">Download</a></li>
     <li><a href="#author">Author</a></li>
     <li><a href="https://github.com/anandathirtha2009-art/aplus-language" class="nav-cta" target="_blank">GitHub ↗</a></li>
   </ul>
@@ -835,25 +881,18 @@
   <div class="hero-inner">
     <div class="hero-left">
       <div class="hero-badge">v0.9 Prototype · MIT License · Open Source</div>
-
       <h1 class="hero-title">
         Code in<br>
         <span class="line-accent">plain English.</span><br>
         <span class="line-dim">No symbols.</span>
       </h1>
-
       <p class="hero-sub">
         A++ is a programming language where every statement reads like a sentence.
         No curly braces, no semicolons — just clear, natural words that execute like Python.
       </p>
-
       <div class="hero-buttons">
-        <a href="https://github.com/anandathirtha2009-art/aplus-language" class="btn-primary" target="_blank">
-          ⬡ View on GitHub
-        </a>
-        <a href="#syntax" class="btn-secondary">
-          Explore Syntax →
-        </a>
+        <a href="https://github.com/anandathirtha2009-art/aplus-language" class="btn-primary" target="_blank">⬡ View on GitHub</a>
+        <a href="#syntax" class="btn-secondary">Explore Syntax →</a>
       </div>
     </div>
 
@@ -892,26 +931,11 @@
 <!-- ── STATS ──────────────────────────────────────────────── -->
 <div class="stats-strip">
   <div class="stats-inner">
-    <div class="stat reveal">
-      <div class="stat-num">6</div>
-      <div class="stat-label">Language Phases</div>
-    </div>
-    <div class="stat reveal">
-      <div class="stat-num">50+</div>
-      <div class="stat-label">English Operators</div>
-    </div>
-    <div class="stat reveal">
-      <div class="stat-num">IECE v3</div>
-      <div class="stat-label">Error Correction</div>
-    </div>
-    <div class="stat reveal">
-      <div class="stat-num">MIT</div>
-      <div class="stat-label">Open Source</div>
-    </div>
-    <div class="stat reveal">
-      <div class="stat-num">0</div>
-      <div class="stat-label">Syntax Symbols Needed</div>
-    </div>
+    <div class="stat reveal"><div class="stat-num">6</div><div class="stat-label">Language Phases</div></div>
+    <div class="stat reveal"><div class="stat-num">50+</div><div class="stat-label">English Operators</div></div>
+    <div class="stat reveal"><div class="stat-num">IECE v3</div><div class="stat-label">Error Correction</div></div>
+    <div class="stat reveal"><div class="stat-num">MIT</div><div class="stat-label">Open Source</div></div>
+    <div class="stat reveal"><div class="stat-num">0</div><div class="stat-label">Syntax Symbols Needed</div></div>
   </div>
 </div>
 
@@ -921,57 +945,15 @@
     <p class="section-tag reveal">Why A++</p>
     <h2 class="section-title reveal">Built for humans first.</h2>
     <p class="section-sub reveal">Every design decision prioritises readability and forgiveness over strictness.</p>
-
     <div class="features-grid">
-
-      <div class="feat-card reveal">
-        <div class="feat-icon">🗣️</div>
-        <div class="feat-title">Plain English Syntax</div>
-        <div class="feat-desc">Write <code>set x to 10</code> or <code>if x is greater than 5 then:</code> — no brackets, no semicolons, no confusion.</div>
-      </div>
-
-      <div class="feat-card reveal">
-        <div class="feat-icon">🧠</div>
-        <div class="feat-title">IECE — Smart Autocorrect</div>
-        <div class="feat-desc">The Intelligent Error Correction Engine fixes typos, inserts missing keywords, and learns your patterns permanently.</div>
-      </div>
-
-      <div class="feat-card reveal">
-        <div class="feat-icon">↔️</div>
-        <div class="feat-title">English &amp; Symbol Operators</div>
-        <div class="feat-desc">Every operator works both ways. <code>is greater than</code> and <code>&gt;</code> are identical. Mix them freely.</div>
-      </div>
-
-      <div class="feat-card reveal">
-        <div class="feat-icon">📊</div>
-        <div class="feat-title">Built-in Statistics</div>
-        <div class="feat-desc"><code>mean of scores</code>, <code>median of data</code>, <code>random integer between 1 and 100</code> — all built in, no imports.</div>
-      </div>
-
-      <div class="feat-card reveal">
-        <div class="feat-icon">🔗</div>
-        <div class="feat-title">Function Chaining</div>
-        <div class="feat-desc">Chain operations with dots: <code>set age to input. trim. convert to int.</code> — left to right, readable as prose.</div>
-      </div>
-
-      <div class="feat-card reveal">
-        <div class="feat-icon">🐍</div>
-        <div class="feat-title">Python Transpiler</div>
-        <div class="feat-desc">Every A++ statement compiles to clean Python under the hood — full performance, full ecosystem access.</div>
-      </div>
-
-      <div class="feat-card reveal">
-        <div class="feat-icon">🔒</div>
-        <div class="feat-title">Error Handling</div>
-        <div class="feat-desc">Natural <code>try / catch err / finally / end try</code> blocks. Assertions with <code>check x &gt; 0 or fail "message"</code>.</div>
-      </div>
-
-      <div class="feat-card reveal">
-        <div class="feat-icon">🔍</div>
-        <div class="feat-title">Step Debugger</div>
-        <div class="feat-desc">Built-in step-through debugger. Set breakpoints with <code>bp 12</code>, inspect variables live, step line by line.</div>
-      </div>
-
+      <div class="feat-card reveal"><div class="feat-icon">🗣️</div><div class="feat-title">Plain English Syntax</div><div class="feat-desc">Write <code>set x to 10</code> or <code>if x is greater than 5 then:</code> — no brackets, no semicolons, no confusion.</div></div>
+      <div class="feat-card reveal"><div class="feat-icon">🧠</div><div class="feat-title">IECE — Smart Autocorrect</div><div class="feat-desc">The Intelligent Error Correction Engine fixes typos, inserts missing keywords, and learns your patterns permanently.</div></div>
+      <div class="feat-card reveal"><div class="feat-icon">↔️</div><div class="feat-title">English &amp; Symbol Operators</div><div class="feat-desc">Every operator works both ways. <code>is greater than</code> and <code>&gt;</code> are identical. Mix them freely.</div></div>
+      <div class="feat-card reveal"><div class="feat-icon">📊</div><div class="feat-title">Built-in Statistics</div><div class="feat-desc"><code>mean of scores</code>, <code>median of data</code>, <code>random integer between 1 and 100</code> — all built in, no imports.</div></div>
+      <div class="feat-card reveal"><div class="feat-icon">🔗</div><div class="feat-title">Function Chaining</div><div class="feat-desc">Chain operations with dots: <code>set age to input. trim. convert to int.</code> — left to right, readable as prose.</div></div>
+      <div class="feat-card reveal"><div class="feat-icon">🐍</div><div class="feat-title">Python Transpiler</div><div class="feat-desc">Every A++ statement compiles to clean Python under the hood — full performance, full ecosystem access.</div></div>
+      <div class="feat-card reveal"><div class="feat-icon">🔒</div><div class="feat-title">Error Handling</div><div class="feat-desc">Natural <code>try / catch err / finally / end try</code> blocks. Assertions with <code>check x &gt; 0 or fail "message"</code>.</div></div>
+      <div class="feat-card reveal"><div class="feat-icon">🔍</div><div class="feat-title">Step Debugger</div><div class="feat-desc">Built-in step-through debugger. Set breakpoints with <code>bp 12</code>, inspect variables live, step line by line.</div></div>
     </div>
   </div>
 </section>
@@ -982,81 +964,13 @@
     <p class="section-tag reveal">Syntax Reference</p>
     <h2 class="section-title reveal">Everything reads like English.</h2>
     <p class="section-sub reveal">Two block styles — colon and classic — both supported.</p>
-
     <div class="syntax-grid">
-
-      <div class="syntax-card reveal">
-        <div class="syntax-card-head">Variables &amp; Assignment</div>
-        <div class="syntax-card-body">
-<span class="syntax-ln">1</span><span class="kw">set</span> x <span class="kw">to</span> <span class="num">10</span>
-<span class="syntax-ln">2</span><span class="kw">set</span> name <span class="kw">to</span> <span class="str">"Anand"</span>
-<span class="syntax-ln">3</span><span class="kw">set</span> result <span class="kw">to</span> x <span class="kw">plus</span> <span class="num">5</span>
-<span class="syntax-ln">4</span><span class="kw">increase</span> score <span class="kw">by</span> <span class="num">10</span>
-<span class="syntax-ln">5</span><span class="kw">decrease</span> health <span class="kw">by</span> <span class="num">1</span>
-        </div>
-      </div>
-
-      <div class="syntax-card reveal">
-        <div class="syntax-card-head">Conditionals (colon style)</div>
-        <div class="syntax-card-body">
-<span class="syntax-ln">1</span><span class="kw">if</span> x <span class="op">&gt;</span> <span class="num">5</span> <span class="kw">then:</span>
-<span class="syntax-ln">2</span>  <span class="kw">say</span> <span class="str">"big"</span>
-<span class="syntax-ln">3</span><span class="kw">else if</span> x <span class="op">==</span> <span class="num">5</span> <span class="kw">then:</span>
-<span class="syntax-ln">4</span>  <span class="kw">say</span> <span class="str">"five"</span>
-<span class="syntax-ln">5</span><span class="kw">else:</span>
-<span class="syntax-ln">6</span>  <span class="kw">say</span> <span class="str">"small"</span>
-<span class="syntax-ln">7</span><span class="kw">end of if-else</span>
-        </div>
-      </div>
-
-      <div class="syntax-card reveal">
-        <div class="syntax-card-head">Loops</div>
-        <div class="syntax-card-body">
-<span class="syntax-ln">1</span><span class="kw">repeat</span> <span class="num">3</span> <span class="kw">times</span>
-<span class="syntax-ln">2</span>  <span class="kw">say</span> <span class="str">"hello"</span>
-<span class="syntax-ln">3</span><span class="kw">end loop</span>
-<span class="syntax-ln">4</span>
-<span class="syntax-ln">5</span><span class="kw">for each</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="num">1</span>, <span class="num">6</span>):
-<span class="syntax-ln">6</span>  <span class="kw">say</span> i
-<span class="syntax-ln">7</span><span class="kw">end of for</span>
-        </div>
-      </div>
-
-      <div class="syntax-card reveal">
-        <div class="syntax-card-head">Functions</div>
-        <div class="syntax-card-body">
-<span class="syntax-ln">1</span><span class="kw">define</span> greet <span class="kw">taking</span> name
-<span class="syntax-ln">2</span>  <span class="kw">say</span> <span class="str">"Hello, {name}!"</span>
-<span class="syntax-ln">3</span><span class="kw">end function</span>
-<span class="syntax-ln">4</span>
-<span class="syntax-ln">5</span><span class="kw">call</span> greet <span class="kw">with</span> <span class="str">"Anand"</span>
-        </div>
-      </div>
-
-      <div class="syntax-card reveal">
-        <div class="syntax-card-head">English Functions (Phase 4)</div>
-        <div class="syntax-card-body">
-<span class="syntax-ln">1</span><span class="kw">set</span> r <span class="kw">to</span> <span class="fn">absolute of</span> <span class="op">-</span><span class="num">9</span>
-<span class="syntax-ln">2</span><span class="kw">set</span> s <span class="kw">to</span> <span class="fn">square root of</span> <span class="num">144</span>
-<span class="syntax-ln">3</span><span class="kw">set</span> m <span class="kw">to</span> <span class="fn">maximum of</span> a <span class="kw">and</span> b
-<span class="syntax-ln">4</span><span class="kw">set</span> f <span class="kw">to</span> <span class="fn">factorial of</span> <span class="num">6</span>
-<span class="syntax-ln">5</span><span class="kw">set</span> avg <span class="kw">to</span> <span class="fn">mean of</span> scores
-        </div>
-      </div>
-
-      <div class="syntax-card reveal">
-        <div class="syntax-card-head">Error Handling</div>
-        <div class="syntax-card-body">
-<span class="syntax-ln">1</span><span class="kw">try</span>
-<span class="syntax-ln">2</span>  <span class="kw">set</span> n <span class="kw">to</span> <span class="fn">convert</span> val <span class="kw">to</span> int
-<span class="syntax-ln">3</span><span class="kw">catch</span> err
-<span class="syntax-ln">4</span>  <span class="kw">say</span> <span class="str">"Error: {err}"</span>
-<span class="syntax-ln">5</span><span class="kw">end try</span>
-<span class="syntax-ln">6</span>
-<span class="syntax-ln">7</span><span class="kw">check</span> x <span class="op">&gt;</span> <span class="num">0</span> <span class="kw">or fail</span> <span class="str">"positive only"</span>
-        </div>
-      </div>
-
+      <div class="syntax-card reveal"><div class="syntax-card-head">Variables &amp; Assignment</div><div class="syntax-card-body"><span class="syntax-ln">1</span><span class="kw">set</span> x <span class="kw">to</span> <span class="num">10</span><br><span class="syntax-ln">2</span><span class="kw">set</span> name <span class="kw">to</span> <span class="str">"Anand"</span><br><span class="syntax-ln">3</span><span class="kw">set</span> result <span class="kw">to</span> x <span class="kw">plus</span> <span class="num">5</span><br><span class="syntax-ln">4</span><span class="kw">increase</span> score <span class="kw">by</span> <span class="num">10</span><br><span class="syntax-ln">5</span><span class="kw">decrease</span> health <span class="kw">by</span> <span class="num">1</span></div></div>
+      <div class="syntax-card reveal"><div class="syntax-card-head">Conditionals (colon style)</div><div class="syntax-card-body"><span class="syntax-ln">1</span><span class="kw">if</span> x <span class="op">&gt;</span> <span class="num">5</span> <span class="kw">then:</span><br><span class="syntax-ln">2</span>  <span class="kw">say</span> <span class="str">"big"</span><br><span class="syntax-ln">3</span><span class="kw">else if</span> x <span class="op">==</span> <span class="num">5</span> <span class="kw">then:</span><br><span class="syntax-ln">4</span>  <span class="kw">say</span> <span class="str">"five"</span><br><span class="syntax-ln">5</span><span class="kw">else:</span><br><span class="syntax-ln">6</span>  <span class="kw">say</span> <span class="str">"small"</span><br><span class="syntax-ln">7</span><span class="kw">end of if-else</span></div></div>
+      <div class="syntax-card reveal"><div class="syntax-card-head">Loops</div><div class="syntax-card-body"><span class="syntax-ln">1</span><span class="kw">repeat</span> <span class="num">3</span> <span class="kw">times</span><br><span class="syntax-ln">2</span>  <span class="kw">say</span> <span class="str">"hello"</span><br><span class="syntax-ln">3</span><span class="kw">end loop</span><br><span class="syntax-ln">4</span><br><span class="syntax-ln">5</span><span class="kw">for each</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="num">1</span>, <span class="num">6</span>):<br><span class="syntax-ln">6</span>  <span class="kw">say</span> i<br><span class="syntax-ln">7</span><span class="kw">end of for</span></div></div>
+      <div class="syntax-card reveal"><div class="syntax-card-head">Functions</div><div class="syntax-card-body"><span class="syntax-ln">1</span><span class="kw">define</span> greet <span class="kw">taking</span> name<br><span class="syntax-ln">2</span>  <span class="kw">say</span> <span class="str">"Hello, {name}!"</span><br><span class="syntax-ln">3</span><span class="kw">end function</span><br><span class="syntax-ln">4</span><br><span class="syntax-ln">5</span><span class="kw">call</span> greet <span class="kw">with</span> <span class="str">"Anand"</span></div></div>
+      <div class="syntax-card reveal"><div class="syntax-card-head">English Functions (Phase 4)</div><div class="syntax-card-body"><span class="syntax-ln">1</span><span class="kw">set</span> r <span class="kw">to</span> <span class="fn">absolute of</span> <span class="op">-</span><span class="num">9</span><br><span class="syntax-ln">2</span><span class="kw">set</span> s <span class="kw">to</span> <span class="fn">square root of</span> <span class="num">144</span><br><span class="syntax-ln">3</span><span class="kw">set</span> m <span class="kw">to</span> <span class="fn">maximum of</span> a <span class="kw">and</span> b<br><span class="syntax-ln">4</span><span class="kw">set</span> f <span class="kw">to</span> <span class="fn">factorial of</span> <span class="num">6</span><br><span class="syntax-ln">5</span><span class="kw">set</span> avg <span class="kw">to</span> <span class="fn">mean of</span> scores</div></div>
+      <div class="syntax-card reveal"><div class="syntax-card-head">Error Handling</div><div class="syntax-card-body"><span class="syntax-ln">1</span><span class="kw">try</span><br><span class="syntax-ln">2</span>  <span class="kw">set</span> n <span class="kw">to</span> <span class="fn">convert</span> val <span class="kw">to</span> int<br><span class="syntax-ln">3</span><span class="kw">catch</span> err<br><span class="syntax-ln">4</span>  <span class="kw">say</span> <span class="str">"Error: {err}"</span><br><span class="syntax-ln">5</span><span class="kw">end try</span><br><span class="syntax-ln">6</span><br><span class="syntax-ln">7</span><span class="kw">check</span> x <span class="op">&gt;</span> <span class="num">0</span> <span class="kw">or fail</span> <span class="str">"positive only"</span></div></div>
     </div>
   </div>
 </section>
@@ -1066,83 +980,38 @@
   <div class="section-inner">
     <p class="section-tag reveal">IECE v3</p>
     <h2 class="section-title reveal">The language that corrects itself.</h2>
-    <p class="section-sub reveal">
-      The Intelligent Error Correction Engine catches mistakes before they crash — and remembers them forever.
-    </p>
-
+    <p class="section-sub reveal">The Intelligent Error Correction Engine catches mistakes before they crash — and remembers them forever.</p>
     <div class="iece-demo">
       <div class="iece-terminal reveal">
-        <div class="iece-terminal-bar">
-          <div class="dot dot-r"></div>
-          <div class="dot dot-y"></div>
-          <div class="dot dot-g"></div>
-          <span class="iece-terminal-title">A++ REPL — IECE in action</span>
-        </div>
+        <div class="iece-terminal-bar"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div><span class="iece-terminal-title">A++ REPL — IECE in action</span></div>
         <div class="iece-body">
-<div><span class="t-prompt">A++[1]&gt; </span><span class="t-input">sett x too 10</span></div>
-<div><span class="t-info">  💡 Typo-fix: 'sett' → 'set',  'too' → 'to'</span></div>
-<div>&nbsp;</div>
-<div><span class="t-prompt">A++[2]&gt; </span><span class="t-input">repeaat 5</span></div>
-<div><span class="t-info">  💬 Did you mean: 'repeat 5 times'? [Y/n]: </span><span class="t-input">y</span></div>
-<div>&nbsp;</div>
-<div><span class="t-prompt">A++[3]&gt; </span><span class="t-input">set x to sqaure root of 144</span></div>
-<div><span class="t-info">  💡 Fuzzy-correct: sqaure → square</span></div>
-<div><span class="t-out">12.0</span></div>
-<div>&nbsp;</div>
-<div><span class="t-prompt">A++[4]&gt; </span><span class="t-input">increase scor by 5</span></div>
-<div><span class="t-warn">  ⚠️  Variable 'scor' not defined.</span></div>
-<div><span class="t-info">  💡 Did you mean 'score'?</span></div>
-<div><span class="t-info">  Correct 'scor' → 'score'? [Y/n]: </span><span class="t-input">y</span></div>
-<div>&nbsp;</div>
-<div><span class="t-prompt">A++[5]&gt; </span><span class="t-input">endif</span></div>
-<div><span class="t-info">  💡 Keyword-insert: 'endif' → 'end of if-else'</span></div>
-<div><span class="cursor"></span></div>
+          <div><span class="t-prompt">A++[1]&gt; </span><span class="t-input">sett x too 10</span></div>
+          <div><span class="t-info">  💡 Typo-fix: 'sett' → 'set',  'too' → 'to'</span></div>
+          <div>&nbsp;</div>
+          <div><span class="t-prompt">A++[2]&gt; </span><span class="t-input">repeaat 5</span></div>
+          <div><span class="t-info">  💬 Did you mean: 'repeat 5 times'? [Y/n]: </span><span class="t-input">y</span></div>
+          <div>&nbsp;</div>
+          <div><span class="t-prompt">A++[3]&gt; </span><span class="t-input">set x to sqaure root of 144</span></div>
+          <div><span class="t-info">  💡 Fuzzy-correct: sqaure → square</span></div>
+          <div><span class="t-out">12.0</span></div>
+          <div>&nbsp;</div>
+          <div><span class="t-prompt">A++[4]&gt; </span><span class="t-input">increase scor by 5</span></div>
+          <div><span class="t-warn">  ⚠️  Variable 'scor' not defined.</span></div>
+          <div><span class="t-info">  💡 Did you mean 'score'?</span></div>
+          <div><span class="t-info">  Correct 'scor' → 'score'? [Y/n]: </span><span class="t-input">y</span></div>
+          <div>&nbsp;</div>
+          <div><span class="t-prompt">A++[5]&gt; </span><span class="t-input">endif</span></div>
+          <div><span class="t-info">  💡 Keyword-insert: 'endif' → 'end of if-else'</span></div>
+          <div><span class="cursor"></span></div>
         </div>
       </div>
-
       <ul class="iece-features-list reveal">
-        <li class="iece-feature">
-          <div class="iece-feature-icon">🔤</div>
-          <div class="iece-feature-text">
-            <strong>Fuzzy Keyword Correction</strong>
-            <span>Detects and fixes misspelled keywords using difflib similarity matching at 0.88 precision threshold.</span>
-          </div>
-        </li>
-        <li class="iece-feature">
-          <div class="iece-feature-icon">🔑</div>
-          <div class="iece-feature-text">
-            <strong>Missing Keyword Insertion</strong>
-            <span><code>set x 10</code> → <code>set x to 10</code>. Detects and fills structural gaps automatically.</span>
-          </div>
-        </li>
-        <li class="iece-feature">
-          <div class="iece-feature-icon">🔄</div>
-          <div class="iece-feature-text">
-            <strong>Word-Order Transposition</strong>
-            <span>Catches swapped words: <code>x set to 10</code> → <code>set x to 10</code>.</span>
-          </div>
-        </li>
-        <li class="iece-feature">
-          <div class="iece-feature-icon">🧠</div>
-          <div class="iece-feature-text">
-            <strong>SQLite Learning Memory</strong>
-            <span>Every accepted correction is stored with a confidence score. High-confidence fixes apply silently next session.</span>
-          </div>
-        </li>
-        <li class="iece-feature">
-          <div class="iece-feature-icon">📚</div>
-          <div class="iece-feature-text">
-            <strong>Three IECE Modes</strong>
-            <span><code>mode auto</code> — silent. <code>mode learn</code> — explains everything. <code>mode standard</code> — balanced.</span>
-          </div>
-        </li>
-        <li class="iece-feature">
-          <div class="iece-feature-icon">📍</div>
-          <div class="iece-feature-text">
-            <strong>Pointer Error Display</strong>
-            <span>Shows <code>^</code> under the exact character that caused the issue, with up to 3 correction suggestions.</span>
-          </div>
-        </li>
+        <li class="iece-feature"><div class="iece-feature-icon">🔤</div><div class="iece-feature-text"><strong>Fuzzy Keyword Correction</strong><span>Detects and fixes misspelled keywords using difflib similarity matching at 0.88 precision threshold.</span></div></li>
+        <li class="iece-feature"><div class="iece-feature-icon">🔑</div><div class="iece-feature-text"><strong>Missing Keyword Insertion</strong><span><code>set x 10</code> → <code>set x to 10</code>. Detects and fills structural gaps automatically.</span></div></li>
+        <li class="iece-feature"><div class="iece-feature-icon">🔄</div><div class="iece-feature-text"><strong>Word-Order Transposition</strong><span>Catches swapped words: <code>x set to 10</code> → <code>set x to 10</code>.</span></div></li>
+        <li class="iece-feature"><div class="iece-feature-icon">🧠</div><div class="iece-feature-text"><strong>SQLite Learning Memory</strong><span>Every accepted correction is stored with a confidence score. High-confidence fixes apply silently next session.</span></div></li>
+        <li class="iece-feature"><div class="iece-feature-icon">📚</div><div class="iece-feature-text"><strong>Three IECE Modes</strong><span><code>mode auto</code> — silent. <code>mode learn</code> — explains everything. <code>mode standard</code> — balanced.</span></div></li>
+        <li class="iece-feature"><div class="iece-feature-icon">📍</div><div class="iece-feature-text"><strong>Pointer Error Display</strong><span>Shows <code>^</code> under the exact character that caused the issue, with up to 3 correction suggestions.</span></div></li>
       </ul>
     </div>
   </div>
@@ -1154,67 +1023,11 @@
     <p class="section-tag reveal">Comparison</p>
     <h2 class="section-title reveal">Same logic. Clearer words.</h2>
     <p class="section-sub reveal">Here's the same program in A++, Python, and Java.</p>
-
     <div class="compare-grid reveal">
-
-      <div class="compare-card">
-        <div class="compare-header aplus">⬡ A++ · hello.aplus</div>
-        <div class="compare-body">
-<div><span class="compare-ln">1</span><span class="kw">set</span> name <span class="kw">to</span> <span class="str">"Anand"</span></div>
-<div><span class="compare-ln">2</span><span class="kw">set</span> age <span class="kw">to</span> <span class="num">20</span></div>
-<div><span class="compare-ln">3</span></div>
-<div><span class="compare-ln">4</span><span class="kw">if</span> age <span class="op">is greater than</span> <span class="num">18</span> <span class="kw">then:</span></div>
-<div><span class="compare-ln">5</span>  <span class="kw">say</span> <span class="str">"Welcome, {name}!"</span></div>
-<div><span class="compare-ln">6</span><span class="kw">else:</span></div>
-<div><span class="compare-ln">7</span>  <span class="kw">say</span> <span class="str">"Too young."</span></div>
-<div><span class="compare-ln">8</span><span class="kw">end of if-else</span></div>
-        </div>
-      </div>
-
-      <div class="compare-card">
-        <div class="compare-header python">🐍 Python · hello.py</div>
-        <div class="compare-body">
-<div><span class="compare-ln">1</span><span style="color:#f9d044">name</span> = <span class="str">"Anand"</span></div>
-<div><span class="compare-ln">2</span><span style="color:#f9d044">age</span> = <span class="num">20</span></div>
-<div><span class="compare-ln">3</span></div>
-<div><span class="compare-ln">4</span><span style="color:#f9d044">if</span> age <span class="op">&gt;</span> <span class="num">18</span>:</div>
-<div><span class="compare-ln">5</span>  <span style="color:#f9d044">print</span>(<span class="str">f"Welcome, {name}!"</span>)</div>
-<div><span class="compare-ln">6</span><span style="color:#f9d044">else</span>:</div>
-<div><span class="compare-ln">7</span>  <span style="color:#f9d044">print</span>(<span class="str">"Too young."</span>)</div>
-<div><span class="compare-ln">8</span></div>
-        </div>
-      </div>
-
-      <div class="compare-card">
-        <div class="compare-header java">☕ Java · Hello.java</div>
-        <div class="compare-body">
-<div><span class="compare-ln">1</span><span style="color:#f97316">public class</span> Hello {</div>
-<div><span class="compare-ln">2</span>  <span style="color:#f97316">public static void</span> main(<span style="color:#f97316">String</span>[] args) {</div>
-<div><span class="compare-ln">3</span>    <span style="color:#f97316">String</span> name = <span class="str">"Anand"</span>;</div>
-<div><span class="compare-ln">4</span>    <span style="color:#f97316">int</span> age = <span class="num">20</span>;</div>
-<div><span class="compare-ln">5</span>    <span style="color:#f97316">if</span> (age &gt; <span class="num">18</span>) {</div>
-<div><span class="compare-ln">6</span>      System.out.println(<span class="str">"Welcome, " + name + "!"</span>);</div>
-<div><span class="compare-ln">7</span>    } <span style="color:#f97316">else</span> {</div>
-<div><span class="compare-ln">8</span>      System.out.println(<span class="str">"Too young."</span>);</div>
-<div><span class="compare-ln">9</span>    }</div>
-<div><span class="compare-ln">10</span>  }</div>
-<div><span class="compare-ln">11</span>}</div>
-        </div>
-      </div>
-
-      <div class="compare-card">
-        <div class="compare-header aplus">⬡ A++ Stats Example</div>
-        <div class="compare-body">
-<div><span class="compare-ln">1</span><span class="kw">set</span> data <span class="kw">to</span> [<span class="num">4</span>, <span class="num">8</span>, <span class="num">6</span>, <span class="num">9</span>, <span class="num">3</span>]</div>
-<div><span class="compare-ln">2</span><span class="kw">set</span> avg  <span class="kw">to</span> <span class="fn">mean of</span> data</div>
-<div><span class="compare-ln">3</span><span class="kw">set</span> med  <span class="kw">to</span> <span class="fn">median of</span> data</div>
-<div><span class="compare-ln">4</span><span class="kw">set</span> best <span class="kw">to</span> <span class="fn">maximum of</span> <span class="fn">sum of</span> data <span class="kw">and</span> <span class="num">100</span></div>
-<div><span class="compare-ln">5</span><span class="kw">say</span> <span class="str">"avg={avg}  med={med}"</span></div>
-<div><span class="compare-ln">6</span><span class="kw">set</span> r <span class="kw">to</span> <span class="fn">random integer between</span> <span class="num">1</span> <span class="kw">and</span> <span class="num">100</span></div>
-<div><span class="compare-ln">7</span><span class="kw">say</span> <span class="str">"random: {r}"</span></div>
-        </div>
-      </div>
-
+      <div class="compare-card"><div class="compare-header aplus">⬡ A++ · hello.aplus</div><div class="compare-body"><div><span class="compare-ln">1</span><span class="kw">set</span> name <span class="kw">to</span> <span class="str">"Anand"</span></div><div><span class="compare-ln">2</span><span class="kw">set</span> age <span class="kw">to</span> <span class="num">20</span></div><div><span class="compare-ln">3</span></div><div><span class="compare-ln">4</span><span class="kw">if</span> age <span class="op">is greater than</span> <span class="num">18</span> <span class="kw">then:</span></div><div><span class="compare-ln">5</span>  <span class="kw">say</span> <span class="str">"Welcome, {name}!"</span></div><div><span class="compare-ln">6</span><span class="kw">else:</span></div><div><span class="compare-ln">7</span>  <span class="kw">say</span> <span class="str">"Too young."</span></div><div><span class="compare-ln">8</span><span class="kw">end of if-else</span></div></div></div>
+      <div class="compare-card"><div class="compare-header python">🐍 Python · hello.py</div><div class="compare-body"><div><span class="compare-ln">1</span><span style="color:#f9d044">name</span> = <span class="str">"Anand"</span></div><div><span class="compare-ln">2</span><span style="color:#f9d044">age</span> = <span class="num">20</span></div><div><span class="compare-ln">3</span></div><div><span class="compare-ln">4</span><span style="color:#f9d044">if</span> age <span class="op">&gt;</span> <span class="num">18</span>:</div><div><span class="compare-ln">5</span>  <span style="color:#f9d044">print</span>(<span class="str">f"Welcome, {name}!"</span>)</div><div><span class="compare-ln">6</span><span style="color:#f9d044">else</span>:</div><div><span class="compare-ln">7</span>  <span style="color:#f9d044">print</span>(<span class="str">"Too young."</span>)</div></div></div>
+      <div class="compare-card"><div class="compare-header java">☕ Java · Hello.java</div><div class="compare-body"><div><span class="compare-ln">1</span><span style="color:#f97316">public class</span> Hello {</div><div><span class="compare-ln">2</span>  <span style="color:#f97316">public static void</span> main(<span style="color:#f97316">String</span>[] args) {</div><div><span class="compare-ln">3</span>    <span style="color:#f97316">String</span> name = <span class="str">"Anand"</span>;</div><div><span class="compare-ln">4</span>    <span style="color:#f97316">int</span> age = <span class="num">20</span>;</div><div><span class="compare-ln">5</span>    <span style="color:#f97316">if</span> (age &gt; <span class="num">18</span>) {</div><div><span class="compare-ln">6</span>      System.out.println(<span class="str">"Welcome, " + name + "!"</span>);</div><div><span class="compare-ln">7</span>    } <span style="color:#f97316">else</span> {</div><div><span class="compare-ln">8</span>      System.out.println(<span class="str">"Too young."</span>);</div><div><span class="compare-ln">9</span>    }</div><div><span class="compare-ln">10</span>  }</div><div><span class="compare-ln">11</span>}</div></div></div>
+      <div class="compare-card"><div class="compare-header aplus">⬡ A++ Stats Example</div><div class="compare-body"><div><span class="compare-ln">1</span><span class="kw">set</span> data <span class="kw">to</span> [<span class="num">4</span>, <span class="num">8</span>, <span class="num">6</span>, <span class="num">9</span>, <span class="num">3</span>]</div><div><span class="compare-ln">2</span><span class="kw">set</span> avg  <span class="kw">to</span> <span class="fn">mean of</span> data</div><div><span class="compare-ln">3</span><span class="kw">set</span> med  <span class="kw">to</span> <span class="fn">median of</span> data</div><div><span class="compare-ln">4</span><span class="kw">set</span> best <span class="kw">to</span> <span class="fn">maximum of</span> <span class="fn">sum of</span> data <span class="kw">and</span> <span class="num">100</span></div><div><span class="compare-ln">5</span><span class="kw">say</span> <span class="str">"avg={avg}  med={med}"</span></div><div><span class="compare-ln">6</span><span class="kw">set</span> r <span class="kw">to</span> <span class="fn">random integer between</span> <span class="num">1</span> <span class="kw">and</span> <span class="num">100</span></div><div><span class="compare-ln">7</span><span class="kw">say</span> <span class="str">"random: {r}"</span></div></div></div>
     </div>
   </div>
 </section>
@@ -1225,54 +1038,48 @@
     <p class="section-tag reveal">Get Started</p>
     <h2 class="section-title reveal">Run in 30 seconds.</h2>
     <p class="section-sub reveal">Python 3.10+ required. No pip packages needed — pure standard library.</p>
-
     <div class="install-card reveal">
       <div class="install-tabs">
-        <button class="install-tab active" onclick="showTab(0)">Clone &amp; Run</button>
-        <button class="install-tab" onclick="showTab(1)">REPL</button>
-        <button class="install-tab" onclick="showTab(2">Run a file</button>
+        <button class="install-tab active" data-tab="0">Clone &amp; Run</button>
+        <button class="install-tab" data-tab="1">REPL</button>
+        <button class="install-tab" data-tab="2">Run a file</button>
       </div>
-
       <div class="install-body">
-        <div class="tab-content" id="tab-0">
-          <div class="install-cmd">
-            <span class="prompt-sym">$</span>
-            <span class="cmd-text" id="cmd-0">git clone https://github.com/anandathirtha2009-art/aplus-language.git</span>
-            <button class="copy-btn" onclick="copyCmd('cmd-0')">copy</button>
-          </div>
-          <div class="install-cmd">
-            <span class="prompt-sym">$</span>
-            <span class="cmd-text" id="cmd-1">cd aplus-language && python3 aplus.py</span>
-            <button class="copy-btn" onclick="copyCmd('cmd-1')">copy</button>
-          </div>
-          <div style="margin-top:12px; font-size:13px; color:var(--muted);">
-            That's it. The REPL starts immediately.
-          </div>
+        <div class="tab-content" data-tab="0">
+          <div class="install-cmd"><span class="prompt-sym">$</span><span class="cmd-text" id="cmd-0">git clone https://github.com/anandathirtha2009-art/aplus-language.git</span><button class="copy-btn" data-cmd="cmd-0">copy</button></div>
+          <div class="install-cmd"><span class="prompt-sym">$</span><span class="cmd-text" id="cmd-1">cd aplus-language && python3 aplus.py</span><button class="copy-btn" data-cmd="cmd-1">copy</button></div>
+          <div style="margin-top:12px; font-size:13px; color:var(--muted);">That's it. The REPL starts immediately.</div>
         </div>
-
-        <div class="tab-content" id="tab-1" style="display:none;">
-          <div class="install-cmd">
-            <span class="prompt-sym">$</span>
-            <span class="cmd-text" id="cmd-2">python3 aplus.py</span>
-            <button class="copy-btn" onclick="copyCmd('cmd-2')">copy</button>
-          </div>
-          <div style="margin-top:8px; font-size:13px; color:var(--muted);">
-            Interactive REPL with line numbers, tab indentation, and IECE correction.
-          </div>
+        <div class="tab-content" data-tab="1" style="display:none;">
+          <div class="install-cmd"><span class="prompt-sym">$</span><span class="cmd-text" id="cmd-2">python3 aplus.py</span><button class="copy-btn" data-cmd="cmd-2">copy</button></div>
+          <div style="margin-top:8px; font-size:13px; color:var(--muted);">Interactive REPL with line numbers, tab indentation, and IECE correction.</div>
         </div>
-
-        <div class="tab-content" id="tab-2" style="display:none;">
-          <div class="install-cmd">
-            <span class="prompt-sym">$</span>
-            <span class="cmd-text" id="cmd-3">python3 aplus.py myprogram.aplus</span>
-            <button class="copy-btn" onclick="copyCmd('cmd-3')">copy</button>
-          </div>
-          <div style="margin-top:8px; font-size:13px; color:var(--muted);">
-            Run any <code>.aplus</code> file directly. Add <code>--debug</code> for full tracebacks.
-          </div>
+        <div class="tab-content" data-tab="2" style="display:none;">
+          <div class="install-cmd"><span class="prompt-sym">$</span><span class="cmd-text" id="cmd-3">python3 aplus.py myprogram.aplus</span><button class="copy-btn" data-cmd="cmd-3">copy</button></div>
+          <div style="margin-top:8px; font-size:13px; color:var(--muted);">Run any <code>.aplus</code> file directly. Add <code>--debug</code> for full tracebacks.</div>
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ── DOWNLOAD SECTION (merged from plugins) ─────────────── -->
+<section id="download">
+  <div class="section-inner">
+    <p class="section-tag reveal">Download</p>
+    <h2 class="section-title reveal">Get A++ for your machine.</h2>
+    <p class="section-sub reveal">Choose the version that fits your needs. All releases are MIT licensed.</p>
+
+    <!-- Recommended (dynamic) -->
+    <div id="recommended-box" class="download-box recommended" style="display: none;">
+      <!-- filled by script -->
+    </div>
+
+    <!-- All versions list -->
+    <h3 style="margin-top: 40px;">📦 All Versions</h3>
+    <div id="versions-list" class="versions-list"></div>
+
+    <p style="margin-top: 24px; font-size: 13px; color: var(--muted);">⬇️ All downloads are <code>.zip</code> archives containing the full interpreter and documentation.</p>
   </div>
 </section>
 
@@ -1281,30 +1088,13 @@
   <div class="section-inner">
     <p class="section-tag reveal">About the Creator</p>
     <h2 class="section-title reveal">Made with purpose<br>in Bengaluru.</h2>
-
     <div class="author-card reveal">
       <div class="author-avatar">VT</div>
-
       <div>
         <div class="author-name">Vishnu Theertha. A</div>
-        <div class="author-location">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Bengaluru, Karnataka, India
-        </div>
-        <p class="author-bio">
-          Creator of A++ — a plain-English programming language designed to make coding
-          accessible to anyone who can write a sentence. The project started from a simple question:
-          <em>why should beginners need to learn a foreign syntax before they can learn to think like a programmer?</em>
-        </p>
-        <div class="author-links">
-          <a href="https://github.com/anandathirtha2009-art/aplus-language" class="author-link" target="_blank">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58l-.02-2.03c-3.34.72-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02 0 2.04.14 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.92.43.37.81 1.1.81 2.22l-.02 3.29c0 .32.22.7.83.58A12 12 0 0024 12C24 5.37 18.63 0 12 0z"/></svg>
-            GitHub
-          </a>
-          <a href="https://github.com/anandathirtha2009-art/aplus-language/blob/main/LICENSE" class="license-badge" target="_blank">
-            📄 MIT License
-          </a>
-        </div>
+        <div class="author-location"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Bengaluru, Karnataka, India</div>
+        <p class="author-bio">Creator of A++ — a plain-English programming language designed to make coding accessible to anyone who can write a sentence. The project started from a simple question: <em>why should beginners need to learn a foreign syntax before they can learn to think like a programmer?</em></p>
+        <div class="author-links"><a href="https://github.com/anandathirtha2009-art/aplus-language" class="author-link" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58l-.02-2.03c-3.34.72-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02 0 2.04.14 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.92.43.37.81 1.1.81 2.22l-.02 3.29c0 .32.22.7.83.58A12 12 0 0024 12C24 5.37 18.63 0 12 0z"/></svg> GitHub</a><a href="https://github.com/anandathirtha2009-art/aplus-language/blob/main/LICENSE" class="license-badge" target="_blank">📄 MIT License</a></div>
       </div>
     </div>
   </div>
@@ -1312,20 +1102,12 @@
 
 <!-- ── FOOTER ──────────────────────────────────────────────── -->
 <footer>
-  <div class="footer-left">
-    <span>A++</span> Programming Language
-  </div>
-  <div class="footer-right">
-    © 2026 <a href="https://github.com/anandathirtha2009-art">Vishnu Theertha. A</a> ·
-    Bengaluru, India ·
-    <a href="https://github.com/anandathirtha2009-art/aplus-language/blob/main/LICENSE" target="_blank">MIT License</a> ·
-    <a href="https://github.com/anandathirtha2009-art/aplus-language" target="_blank">Source on GitHub</a>
-  </div>
+  <div class="footer-left"><span>A++</span> Programming Language</div>
+  <div class="footer-right">© 2026 <a href="https://github.com/anandathirtha2009-art">Vishnu Theertha. A</a> · Bengaluru, India · <a href="https://github.com/anandathirtha2009-art/aplus-language/blob/main/LICENSE" target="_blank">MIT License</a> · <a href="https://github.com/anandathirtha2009-art/aplus-language" target="_blank">Source on GitHub</a></div>
 </footer>
 
-<!-- ── JS ─────────────────────────────────────────────────── -->
 <script>
-  /* scroll reveal */
+  // Scroll reveal
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -1334,260 +1116,73 @@
       }
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
   document.querySelectorAll('.reveal').forEach((el, i) => {
     el.style.transitionDelay = (i % 4) * 80 + 'ms';
     obs.observe(el);
   });
+  document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.classList.add('visible'), 200));
 
-  /* hero reveals immediately */
-  document.querySelectorAll('.hero .reveal').forEach(el => {
-    setTimeout(() => el.classList.add('visible'), 200);
-  });
-
-  /* tab switching */
-  function showTab(n) {
-    document.querySelectorAll('.tab-content').forEach((t, i) => {
-      t.style.display = i === n ? 'block' : 'none';
-    });
-    document.querySelectorAll('.install-tab').forEach((t, i) => {
-      t.classList.toggle('active', i === n);
-    });
+  // Install tabs
+  const tabs = document.querySelectorAll('.install-tab');
+  const contents = document.querySelectorAll('.tab-content');
+  function showTab(idx) {
+    contents.forEach((c, i) => c.style.display = i === idx ? 'block' : 'none');
+    tabs.forEach((t, i) => t.classList.toggle('active', i === idx));
   }
+  tabs.forEach((tab, idx) => tab.addEventListener('click', () => showTab(idx)));
+  showTab(0); // default
 
-  /* copy command */
+  // Copy command
   function copyCmd(id) {
     const txt = document.getElementById(id).textContent;
     navigator.clipboard.writeText(txt).then(() => {
-      const btn = event.target;
-      btn.textContent = 'copied!';
-      btn.style.color = 'var(--accent)';
-      setTimeout(() => {
-        btn.textContent = 'copy';
-        btn.style.color = '';
-      }, 1800);
+      const btn = document.querySelector(`button[data-cmd="${id}"]`);
+      if (btn) {
+        const old = btn.textContent;
+        btn.textContent = 'copied!';
+        btn.style.color = 'var(--accent)';
+        setTimeout(() => { btn.textContent = old; btn.style.color = ''; }, 1800);
+      }
     });
+  }
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    const cmdId = btn.getAttribute('data-cmd');
+    if (cmdId) btn.addEventListener('click', () => copyCmd(cmdId));
+  });
+
+  // ── AUTO DOWNLOAD SYSTEM ─────────────────────────────────
+  // EDIT THIS LIST to add/remove versions
+  const files = [
+    "aplus-recommended-v1.2.0.zip",
+    "aplus-latest-v1.2.0.zip",
+    "aplus-v1.1.0.zip",
+    "aplus-v1.0.0.zip"
+  ];
+
+  const recBox = document.getElementById("recommended-box");
+  const listBox = document.getElementById("versions-list");
+  listBox.innerHTML = '';
+
+  for (const file of files) {
+    const url = "downloads/" + file;
+    const isRecommended = file.includes("recommended");
+    const isLatest = file.includes("latest");
+    const version = file.replace(".zip", "").split("-").pop();
+
+    if (isRecommended) {
+      recBox.style.display = 'block';
+      recBox.innerHTML = `
+        <h3>🚀 Recommended Version</h3>
+        <p><strong>${version}</strong><br><span style="font-size:13px; color:var(--white-2);">Stable, fully tested, best for beginners.</span></p>
+        <a href="${url}" download class="btn-download">Download ${version}</a>
+      `;
+    }
+
+    const div = document.createElement('div');
+    div.className = "version-item" + (isLatest ? " latest" : "");
+    div.innerHTML = `<span>${version} ${isLatest ? '(Latest)' : ''}</span><a href="${url}" download>Download</a>`;
+    listBox.appendChild(div);
   }
 </script>
 </body>
 </html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A++ Language</title>
-
-<style>
-/* ── BASE ── */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0a0e1a;
-  color: #f0f4ff;
-}
-
-/* ── NAV ── */
-nav {
-  padding: 15px 30px;
-  background: #111827;
-  position: sticky;
-  top: 0;
-}
-
-nav a {
-  color: #4af0c4;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-/* ── SECTION ── */
-section {
-  padding: 80px 30px;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-
-h1, h2 {
-  margin-bottom: 10px;
-}
-
-p {
-  color: #c8d4e8;
-}
-
-/* ── FEATURES ── */
-.features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-  gap: 20px;
-}
-
-.card {
-  background: #111827;
-  padding: 20px;
-  border-radius: 10px;
-}
-
-/* ── SCREENSHOTS ── */
-.screens {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-  gap: 20px;
-}
-
-.screens img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-/* ── PLUGIN ZONE ── */
-.plugin {
-  border-top: 1px solid rgba(255,255,255,0.1);
-}
-
-/* ── FOOTER ── */
-footer {
-  padding: 30px;
-  text-align: center;
-  background: #111827;
-}
-</style>
-</head>
-
-<body>
-
-<!-- NAV -->
-<nav>
-  <a href="#">A++ Language</a>
-</nav>
-
-<!-- HERO -->
-<section>
-  <h1>Code in plain English</h1>
-  <p>A++ is a programming language where code reads like sentences.</p>
-</section>
-
-<!-- FEATURES -->
-<section>
-  <h2>Features</h2>
-  <div class="features">
-    <div class="card">Plain English Syntax</div>
-    <div class="card">Smart Error Correction</div>
-    <div class="card">Python Backend</div>
-  </div>
-</section>
-
-<!-- SCREENSHOTS -->
-<section>
-  <h2>Screenshots</h2>
-  <div class="screens">
-    <img src="images/demo1.png">
-    <img src="images/demo2.png">
-  </div>
-</section>
-
-<!-- 🔥 PLUG ZONE (ADD EVERYTHING BELOW THIS ONLY) -->
-<div id="plugins">
-
-  <!-- Example plugin (you can delete this) -->
-  <div class="plugin">
-    <section>
-      <h2>New Feature</h2>
-      <p>Add anything here without breaking site.</p>
-    </section>
-  </div>
-
-</div>
-
-<!-- FOOTER -->
-<footer>
-  © 2026 A++ Language
-</footer>
-
-</body>
-</html>
-<!-- ── DOWNLOAD SECTION (PLUGIN) ── -->
-<div class="plugin">
-  <section>
-    <h2>Download A++</h2>
-    <p>Get the latest version or explore all previous releases.</p>
-
-    <!-- RECOMMENDED -->
-    <div class="download-box recommended">
-      <h3>🚀 Recommended Version</h3>
-      <p><strong>Version:</strong> v1.0.0</p>
-      <p><strong>Release Date:</strong> May 2026</p>
-      <p>Stable and recommended for all users.</p>
-
-      <a href="downloads/aplus-v1.0.0.zip" download class="btn-download">
-        Download v1.0.0
-      </a>
-    </div>
-
-    <!-- ALL VERSIONS -->
-    <h3 style="margin-top:40px;">📦 All Versions</h3>
-
-    <div class="versions-list">
-
-      <div class="version-item">
-        <span>v1.0.0 (Latest)</span>
-        <a href="downloads/aplus-v1.0.0.zip" download>Download</a>
-      </div>
-
-      <div class="version-item">
-        <span>v0.9.0</span>
-        <a href="downloads/aplus-v0.9.0.zip" download>Download</a>
-      </div>
-
-      <div class="version-item">
-        <span>v0.8.0</span>
-        <a href="downloads/aplus-v0.8.0.zip" download>Download</a>
-      </div>
-
-    </div>
-  </section>
-</div>
-
-<!-- ── STYLE FOR DOWNLOAD SECTION ── -->
-<style>
-.download-box {
-  background: #111827;
-  padding: 25px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.08);
-  margin-top: 20px;
-}
-
-.recommended {
-  border: 1px solid #4af0c4;
-}
-
-.btn-download {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 10px 18px;
-  background: #4af0c4;
-  color: #0a0e1a;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: bold;
-}
-
-.versions-list {
-  margin-top: 15px;
-}
-
-.version-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 15px;
-  background: #111827;
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
-
-.version-item a {
-  color: #4af0c4;
-  text-decoration: none;
-}
-</style>
