@@ -1276,7 +1276,7 @@
     })
     .catch(() => {
       // Static fallback – edit this array when you add PDFs
-      const fallbackManuals = [];   // Example: ["user-manual-v1.3.pdf"]
+      const fallbackManuals = ["user-manual-v1.3.pdf"];   // Example: ["user-manual-v1.3.pdf"]
       if (fallbackManuals.length === 0) {
         manualsContainer.innerHTML = '<p style="color: var(--muted);">User manuals will appear here automatically when you add PDFs.</p>';
       } else {
