@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A++ — Development Log</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&display=swap" rel="stylesheet">
+  <style>/* same base styles */</style>
+</head>
+<body>
+<nav>...</nav>
+<div class="page-content" style="padding: 140px 48px 80px;">
+  <div class="section-inner" style="max-width: 900px;">
+    <h1 class="section-title">Development Log</h1>
+    <p style="margin-bottom: 40px;">What's happening with A++ – new features, fixes, and community contributions.</p>
+    <div id="dev-posts"></div>
+  </div>
+</div>
+<footer>...</footer>
+<script>
+  // List text files in "development/" folder and display each.
+  // Since we cannot list directory client-side, we'll use a manifest.json or you manually list files.
+  // For ease, you can create an array of filenames (e.g., "2026-05-01-update.txt") and fetch each.
+  // I'll implement a fetch for a "manifest.json" that you can generate via simple script.
+  // But here I'll provide a manual array approach – you update it each time you add a file.
+  const posts = [
+    // Add your .txt filenames here:
+    // "first-post.txt", "second-post.txt"
+  ];
+  const container = document.getElementById("dev-posts");
+  if (posts.length === 0) {
+    container.innerHTML = '<p>No development updates yet. Check back soon.</p>';
+  } else {
+    posts.forEach(async (postFile) => {
+      try {
+        const res = await fetch(`development/${postFile}`);
+        const text = await res.text();
+        const div = document.createElement('div');
+        div.className = 'download-box';
+        div.style.marginBottom = '20px';
+        div.innerHTML = `<h3>${postFile.replace('.txt','').replace(/-/g,' ')}</h3><pre style="white-space: pre-wrap; font-family: var(--mono);">${escapeHtml(text)}</pre>`;
+        container.appendChild(div);
+      } catch(e) { console.warn(e); }
+    });
+  }
+  function escapeHtml(str) {
+    return str.replace(/[&<>]/g, function(m) {
+      if (m === '&') return '&amp;';
+      if (m === '<') return '&lt;';
+      if (m === '>') return '&gt;';
+      return m;
+    });
+  }
+</script>
+</body>
+</html>
