@@ -7,8 +7,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&display=swap" rel="stylesheet" />
+  <!-- hCaptcha script -->
+  <script src="https://hcaptcha.com/1/api.js" async defer></script>
   <style>
-    /* ── exact same design tokens as index.html ── */
+    /* ── same design tokens as before ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
@@ -96,12 +98,11 @@
     }
     .nav-cta:hover { opacity: 0.85; }
 
-    /* page content */
     .page-content {
       padding: 140px 48px 80px;
     }
     .container {
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto;
     }
 
@@ -141,14 +142,14 @@
       margin-bottom: 40px;
     }
 
-    .contribute-steps {
+    .contribute-steps, .contact-form-card {
       background: var(--ink-2);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 32px;
       margin: 40px 0;
     }
-    .contribute-steps h3 {
+    .contribute-steps h3, .contact-form-card h3 {
       font-family: var(--display);
       font-weight: 700;
       font-size: 22px;
@@ -162,12 +163,50 @@
     .contribute-steps li {
       margin-bottom: 12px;
     }
-    .contribute-steps a {
+    .contribute-steps a, .contact-form-card a {
       color: var(--accent);
       text-decoration: none;
     }
-    .contribute-steps a:hover {
-      text-decoration: underline;
+
+    .contact-form-card input, .contact-form-card textarea {
+      width: 100%;
+      background: var(--ink-3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: var(--white);
+      font-family: var(--body);
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+    .contact-form-card label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+      color: var(--white-2);
+    }
+    .contact-form-card .h-captcha {
+      margin: 20px 0;
+    }
+    .btn-submit {
+      background: var(--accent);
+      color: var(--ink);
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 15px;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px var(--glow);
+    }
+    .form-status {
+      margin-top: 16px;
+      font-size: 14px;
     }
 
     .email-card {
@@ -199,11 +238,6 @@
       border-radius: 10px;
       text-decoration: none;
       margin-top: 16px;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .btn-email:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px var(--glow);
     }
 
     .message-box {
@@ -235,12 +269,11 @@
       color: var(--muted-2);
     }
     .footer-right a { color: var(--muted); text-decoration: none; }
-    .footer-right a:hover { color: var(--white); }
 
     @media (max-width: 700px) {
       nav { padding: 16px 24px; }
       .page-content { padding: 120px 24px 60px; }
-      .contribute-steps { padding: 24px; }
+      .contribute-steps, .contact-form-card { padding: 24px; }
       .email-card .email { font-size: 16px; }
       footer { padding: 32px 24px; flex-direction: column; text-align: center; }
     }
@@ -279,11 +312,35 @@
         <li>Download the latest version of A++ from our <a href="index.html#download">download section</a>.</li>
         <li>Use it, experiment, and note any suggestions, changes, or new features you'd like to see.</li>
         <li>If you have modified the code yourself, describe what you changed and why.</li>
-        <li>Send an email to <strong>aplusplus.teamsupport@gmail.com</strong> with your feedback, ideas, or attached code.</li>
+        <li>Use the form below <strong>or</strong> send an email directly to <strong>aplusplus.teamsupport@gmail.com</strong>.</li>
       </ol>
       <p style="margin-top: 20px; color: var(--white-2);">
         ✨ Even if you are <strong>not a programmer</strong>, your ideas are valuable. We believe that good ideas come from anyone, anywhere.
       </p>
+    </div>
+
+    <!-- NEW contact form with CAPTCHA -->
+    <div class="contact-form-card">
+      <h3>✍️ Send us a message</h3>
+      <form id="contactForm" action="contact-process.php" method="POST">
+        <label for="name">Your name (optional)</label>
+        <input type="text" id="name" name="name" placeholder="e.g. Anand">
+
+        <label for="email">Your email address <span style="color: var(--accent);">*</span></label>
+        <input type="email" id="email" name="email" required placeholder="you@example.com">
+
+        <label for="subject">Subject <span style="color: var(--accent);">*</span></label>
+        <input type="text" id="subject" name="subject" required placeholder="Suggestion / Bug report / Contribution">
+
+        <label for="message">Message <span style="color: var(--accent);">*</span></label>
+        <textarea id="message" name="message" rows="5" required placeholder="What would you like to share?"></textarea>
+
+        <!-- hCaptcha widget -->
+        <div class="h-captcha" data-sitekey="YOUR_SITE_KEY"></div>
+
+        <button type="submit" class="btn-submit">Send message →</button>
+        <div id="formStatus" class="form-status"></div>
+      </form>
     </div>
 
     <div class="email-card">
@@ -296,7 +353,7 @@
     </div>
 
     <div class="message-box">
-      <strong>📢 What happens after you send an email?</strong><br>
+      <strong>📢 What happens after you send a message?</strong><br>
       All contributions will be reviewed by the maintainer (Vishnu Theertha). If your code or idea is used, you will be credited on the <a href="development.html" style="color: var(--accent);">Development page</a>. We aim to reply within 5–7 days.
     </div>
 
@@ -312,5 +369,36 @@
   <div class="footer-right">© 2026 Vishnu Theertha. A · Bengaluru, India · <a href="https://github.com/anandathirtha2009-art/aplus-language/blob/main/LICENSE" target="_blank">MIT License</a> · <a href="https://github.com/anandathirtha2009-art/aplus-language" target="_blank">Source on GitHub</a></div>
 </footer>
 
+<script>
+  // Optional: show submission status without page reload (if you prefer AJAX)
+  const form = document.getElementById('contactForm');
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const statusDiv = document.getElementById('formStatus');
+      statusDiv.innerHTML = 'Sending...';
+      const formData = new FormData(form);
+      try {
+        const response = await fetch('contact-process.php', {
+          method: 'POST',
+          body: formData
+        });
+        const text = await response.text();
+        if (response.ok) {
+          statusDiv.innerHTML = '✅ Message sent! Thank you. We’ll reply soon.';
+          form.reset();
+          // reset hCaptcha manually
+          if (typeof hcaptcha !== 'undefined') {
+            hcaptcha.reset();
+          }
+        } else {
+          statusDiv.innerHTML = '❌ Error: ' + text;
+        }
+      } catch (err) {
+        statusDiv.innerHTML = '❌ Network error. Please try again or use the email link.';
+      }
+    });
+  }
+</script>
 </body>
 </html>
