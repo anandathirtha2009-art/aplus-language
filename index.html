@@ -783,8 +783,8 @@
 <script>
   // Auto-load versions and manuals
   const files = [
-    "aplus-recommended-v1.2.0.zip",
-    "aplus-latest-v1.2.0.zip",
+     "aplus-recommended-v1.3.0.zip",
+    "aplus-latest-v1.3.0.zip",
     "aplus-v1.1.0.zip",
     "aplus-v1.0.0.zip"
   ];
@@ -812,19 +812,26 @@
   // To make it automatic, you would need a server-side script (PHP, Python) that lists files.
   // I'll provide a client-side fetch that tries to get a JSON manifest; if not present, shows a message.
   // Alternatively, you can manually edit this array:
-  const manuals = [
-    // Add your manuals here, e.g. "user-manual-v1.2.pdf"
-  ];
-  const manualsDiv = document.getElementById("manuals-list");
-  if (manuals.length === 0) {
-    manualsDiv.innerHTML = '<p style="color: var(--muted);">No user manuals uploaded yet. Check back later.</p>';
-  } else {
-    manuals.forEach(file => {
-      const card = document.createElement('div');
-      card.className = 'manual-card';
-      card.innerHTML = `<a href="downloads/${file}" download>${file}</a>`;
-      manualsDiv.appendChild(card);
-    });
+  fetch('list-manuals.php')
+  .then(response => response.json())
+  .then(files => {
+    const manualsDiv = document.getElementById('manuals-list');
+    manualsDiv.innerHTML = '';
+    if (files.length === 0) {
+      manualsDiv.innerHTML = '<p style="color: var(--muted);">No user manuals uploaded yet.</p>';
+    } else {
+      files.forEach(file => {
+        const card = document.createElement('div');
+        card.className = 'manual-card';
+        card.innerHTML = `<a href="downloads/${encodeURIComponent(file)}" download>${file}</a>`;
+        manualsDiv.appendChild(card);
+      });
+    }
+  })
+  .catch(error => {
+    console.error('Error loading manuals:', error);
+    document.getElementById('manuals-list').innerHTML = '<p style="color: var(--muted);">Unable to load manuals list.</p>';
+  });
   }
 </script>
 </body>
