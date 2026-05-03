@@ -1,50 +1,315 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>A++ — Development Log</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&display=swap" rel="stylesheet">
-  <style>/* same base styles */</style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    /* ── exact same design tokens & reset as index.html ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --ink:      #0a0e1a;
+      --ink-2:    #111827;
+      --ink-3:    #1c2333;
+      --muted:    #8492a6;
+      --muted-2:  #5a6880;
+      --white:    #f0f4ff;
+      --white-2:  #c8d4e8;
+      --accent:   #4af0c4;
+      --accent-2: #38bdf8;
+      --accent-3: #f97316;
+      --glow:     rgba(74, 240, 196, 0.18);
+      --border:   rgba(255,255,255,0.07);
+      --radius:   14px;
+      --mono:     'JetBrains Mono', monospace;
+      --display:  'Syne', sans-serif;
+      --body:     'DM Sans', sans-serif;
+    }
+
+    body {
+      background: var(--ink);
+      color: var(--white);
+      font-family: var(--body);
+      font-size: 17px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.022;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(10, 14, 26, 0.7);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: -0.5px;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: var(--ink) !important;
+      font-weight: 600 !important;
+      padding: 8px 20px;
+      border-radius: 8px;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* page content */
+    .page-content {
+      padding: 140px 48px 80px;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(36px, 4vw, 52px);
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .section-sub {
+      font-size: 17px;
+      color: var(--white-2);
+      font-weight: 300;
+      margin-bottom: 60px;
+    }
+
+    /* development post card */
+    .post-card {
+      background: var(--ink-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 28px;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .post-card:hover {
+      border-color: rgba(74,240,196,0.3);
+    }
+    .post-header {
+      padding: 18px 24px;
+      background: rgba(255,255,255,0.02);
+      border-bottom: 1px solid var(--border);
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: -0.3px;
+      color: var(--accent);
+    }
+    .post-body {
+      padding: 24px;
+      font-family: var(--mono);
+      font-size: 14px;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      word-break: break-word;
+      color: var(--white-2);
+    }
+    .post-body p {
+      margin-bottom: 1em;
+    }
+
+    /* empty message */
+    .empty-message {
+      background: var(--ink-3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 48px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .footer-left {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--muted);
+    }
+    .footer-left span { color: var(--accent); }
+    .footer-right {
+      font-size: 13px;
+      color: var(--muted-2);
+    }
+    .footer-right a { color: var(--muted); text-decoration: none; }
+    .footer-right a:hover { color: var(--white); }
+
+    @media (max-width: 700px) {
+      nav { padding: 16px 24px; }
+      .page-content { padding: 120px 24px 60px; }
+      .post-header { font-size: 18px; padding: 14px 20px; }
+      .post-body { padding: 18px; }
+      footer { padding: 32px 24px; flex-direction: column; text-align: center; }
+    }
+  </style>
 </head>
 <body>
-<nav>...</nav>
-<div class="page-content" style="padding: 140px 48px 80px;">
-  <div class="section-inner" style="max-width: 900px;">
-    <h1 class="section-title">Development Log</h1>
-    <p style="margin-bottom: 40px;">What's happening with A++ – new features, fixes, and community contributions.</p>
+
+<!-- ── SAME NAVIGATION AS INDEX ── -->
+<nav>
+  <a class="nav-logo" href="index.html"><span>A++</span> Language</a>
+  <ul class="nav-links">
+    <li><a href="index.html#features">Features</a></li>
+    <li><a href="index.html#syntax">Syntax</a></li>
+    <li><a href="index.html#iece">IECE</a></li>
+    <li><a href="index.html#compare">Compare</a></li>
+    <li><a href="index.html#download">Download</a></li>
+    <li><a href="development.html">Development</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="index.html#author">Author</a></li>
+    <li><a href="https://github.com/anandathirtha2009-art/aplus-language" class="nav-cta" target="_blank">GitHub ↗</a></li>
+  </ul>
+</nav>
+
+<main class="page-content">
+  <div class="container">
+    <div class="section-tag">Project Log</div>
+    <h1 class="section-title">Development & Contributions</h1>
+    <p class="section-sub">What's happening with A++ – new features, fixes, and community contributions.</p>
+
     <div id="dev-posts"></div>
   </div>
-</div>
-<footer>...</footer>
+</main>
+
+<footer>
+  <div class="footer-left"><span>A++</span> Programming Language</div>
+  <div class="footer-right">© 2026 Vishnu Theertha. A · Bengaluru, India · <a href="https://github.com/anandathirtha2009-art/aplus-language/blob/main/LICENSE" target="_blank">MIT License</a> · <a href="https://github.com/anandathirtha2009-art/aplus-language" target="_blank">Source on GitHub</a></div>
+</footer>
+
 <script>
-  // List text files in "development/" folder and display each.
-  // Since we cannot list directory client-side, we'll use a manifest.json or you manually list files.
-  // For ease, you can create an array of filenames (e.g., "2026-05-01-update.txt") and fetch each.
-  // I'll implement a fetch for a "manifest.json" that you can generate via simple script.
-  // But here I'll provide a manual array approach – you update it each time you add a file.
+  // ── EDIT THIS LIST: add the names of your .txt files inside the "development" folder ──
   const posts = [
-    // Add your .txt filenames here:
-    // "first-post.txt", "second-post.txt"
+    // Example: "2026-05-03-welcome.txt",
+    //          "first-update.txt"
   ];
-  const container = document.getElementById("dev-posts");
-  if (posts.length === 0) {
-    container.innerHTML = '<p>No development updates yet. Check back soon.</p>';
+
+  const container = document.getElementById('dev-posts');
+
+  if (!posts.length) {
+    container.innerHTML = `
+      <div class="empty-message">
+        <p>📭 No development posts yet.</p>
+        <p style="margin-top: 12px;">Place <code>.txt</code> files in the <code>development/</code> folder and add their names to the <code>posts</code> array in this HTML.</p>
+      </div>
+    `;
   } else {
-    posts.forEach(async (postFile) => {
+    container.innerHTML = '<div style="margin-bottom: 20px;">Loading updates...</div>';
+
+    Promise.all(posts.map(async (fileName) => {
       try {
-        const res = await fetch(`development/${postFile}`);
-        const text = await res.text();
-        const div = document.createElement('div');
-        div.className = 'download-box';
-        div.style.marginBottom = '20px';
-        div.innerHTML = `<h3>${postFile.replace('.txt','').replace(/-/g,' ')}</h3><pre style="white-space: pre-wrap; font-family: var(--mono);">${escapeHtml(text)}</pre>`;
-        container.appendChild(div);
-      } catch(e) { console.warn(e); }
+        const response = await fetch(`development/${fileName}`);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const text = await response.text();
+        return { fileName, content: text, ok: true };
+      } catch (err) {
+        console.warn(`Failed to load ${fileName}:`, err);
+        return { fileName, content: `⚠️ Could not load ${fileName}`, ok: false };
+      }
+    })).then(results => {
+      container.innerHTML = '';
+      for (const { fileName, content, ok } of results) {
+        if (!ok) {
+          const errorDiv = document.createElement('div');
+          errorDiv.className = 'post-card';
+          errorDiv.innerHTML = `
+            <div class="post-header">⚠️ ${fileName.replace('.txt', '').replace(/-/g, ' ')}</div>
+            <div class="post-body" style="color: #f87171;">${escapeHtml(content)}</div>
+          `;
+          container.appendChild(errorDiv);
+          continue;
+        }
+
+        // Create nice title from filename (remove extension, replace dashes with spaces)
+        const title = fileName.replace(/\.txt$/i, '').replace(/-/g, ' ');
+        const postDiv = document.createElement('div');
+        postDiv.className = 'post-card';
+        postDiv.innerHTML = `
+          <div class="post-header">📌 ${escapeHtml(title)}</div>
+          <div class="post-body">${formatContent(content)}</div>
+        `;
+        container.appendChild(postDiv);
+      }
+    }).catch(err => {
+      console.error(err);
+      container.innerHTML = `<div class="empty-message"><p>❌ Error loading development posts. Check the console.</p></div>`;
     });
   }
+
+  // Helper: basic formatting (preserve line breaks, auto-link simple URLs)
+  function formatContent(text) {
+    if (!text) return '';
+    let html = escapeHtml(text);
+    // Preserve line breaks
+    html = html.replace(/\n/g, '<br>');
+    // Simple autolink
+    html = html.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" style="color: var(--accent);">$1</a>');
+    return html;
+  }
+
   function escapeHtml(str) {
     return str.replace(/[&<>]/g, function(m) {
       if (m === '&') return '&amp;';
