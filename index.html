@@ -22,9 +22,9 @@
       --muted-2:  #5a6880;
       --white:    #f0f4ff;
       --white-2:  #c8d4e8;
-      --accent:   #4af0c4;       /* electric mint */
-      --accent-2: #38bdf8;       /* sky blue */
-      --accent-3: #f97316;       /* amber — used sparingly */
+      --accent:   #4af0c4;
+      --accent-2: #38bdf8;
+      --accent-3: #f97316;
       --glow:     rgba(74, 240, 196, 0.18);
       --border:   rgba(255,255,255,0.07);
       --radius:   14px;
@@ -42,7 +42,6 @@
       overflow-x: hidden;
     }
 
-    /* ── noise texture overlay ──────────────────────────── */
     body::before {
       content: '';
       position: fixed;
@@ -53,7 +52,6 @@
       z-index: 999;
     }
 
-    /* ── nav ─────────────────────────────────────────────── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -64,7 +62,6 @@
       padding: 18px 48px;
       background: rgba(10, 14, 26, 0.7);
       backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
     }
 
@@ -88,22 +85,10 @@
       text-decoration: none;
       font-size: 14px;
       font-weight: 400;
-      letter-spacing: 0.02em;
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--white); }
 
-    .nav-cta {
-      background: var(--accent);
-      color: var(--ink) !important;
-      font-weight: 600 !important;
-      padding: 8px 20px;
-      border-radius: 8px;
-      transition: opacity 0.2s !important;
-    }
-    .nav-cta:hover { opacity: 0.85; }
-
-    /* ── hero ─────────────────────────────────────────────── */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -180,7 +165,6 @@
     .hero-title .line-accent { color: var(--accent); }
     .hero-title .line-dim    { color: var(--muted); }
 
-    /* NEW: slogan style */
     .hero-slogan {
       font-family: var(--display);
       font-size: 20px;
@@ -207,26 +191,6 @@
       flex-wrap: wrap;
     }
 
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--accent);
-      color: var(--ink);
-      font-family: var(--display);
-      font-weight: 700;
-      font-size: 15px;
-      padding: 14px 28px;
-      border-radius: 10px;
-      text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 0 0 0 var(--glow);
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 40px var(--glow);
-    }
-
     .btn-secondary {
       display: inline-flex;
       align-items: center;
@@ -247,22 +211,15 @@
       background: rgba(255,255,255,0.04);
     }
 
-    /* ── hero code block ─────────────────────────────────── */
-    .hero-code-wrap {
-      position: relative;
-    }
-
+    /* hero code block */
+    .hero-code-wrap { position: relative; }
     .code-window {
       background: var(--ink-3);
       border-radius: 16px;
       border: 1px solid var(--border);
       overflow: hidden;
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,0.04),
-        0 40px 80px rgba(0,0,0,0.5),
-        0 0 120px rgba(74,240,196,0.06);
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.04), 0 40px 80px rgba(0,0,0,0.5), 0 0 120px rgba(74,240,196,0.06);
     }
-
     .code-titlebar {
       display: flex;
       align-items: center;
@@ -281,12 +238,10 @@
       font-size: 12px;
       color: var(--muted-2);
     }
-
     .code-body {
       padding: 28px 28px 28px 0;
       overflow-x: auto;
     }
-
     pre.code-pre {
       font-family: var(--mono);
       font-size: 14px;
@@ -294,7 +249,6 @@
       tab-size: 2;
       counter-reset: line;
     }
-
     pre.code-pre .ln {
       display: inline-block;
       width: 44px;
@@ -304,15 +258,12 @@
       user-select: none;
       font-size: 12px;
     }
-
-    /* syntax colours */
     .kw  { color: #4af0c4; font-weight: 500; }
     .str { color: #f0c674; }
     .num { color: #f97316; }
     .cm  { color: #4a5a6e; font-style: italic; }
     .fn  { color: #38bdf8; }
     .op  { color: #a78bfa; }
-
     .cursor {
       display: inline-block;
       width: 2px;
@@ -323,7 +274,7 @@
     }
     @keyframes blink { 50% { opacity: 0; } }
 
-    /* ── stats strip ─────────────────────────────────────── */
+    /* stats strip */
     .stats-strip {
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
@@ -338,9 +289,7 @@
       gap: 20px;
       flex-wrap: wrap;
     }
-    .stat {
-      text-align: center;
-    }
+    .stat { text-align: center; }
     .stat-num {
       font-family: var(--display);
       font-size: 38px;
@@ -356,14 +305,9 @@
       margin-top: 4px;
     }
 
-    /* ── section base ────────────────────────────────────── */
-    section {
-      padding: 120px 48px;
-    }
-    .section-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+    /* sections */
+    section { padding: 120px 48px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
     .section-tag {
       font-family: var(--mono);
       font-size: 12px;
@@ -388,13 +332,12 @@
       margin-bottom: 60px;
     }
 
-    /* ── features grid ───────────────────────────────────── */
+    /* features grid */
     .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
     }
-
     .feat-card {
       background: var(--ink-2);
       border: 1px solid var(--border);
@@ -414,7 +357,6 @@
     }
     .feat-card:hover { border-color: rgba(74,240,196,0.3); transform: translateY(-3px); }
     .feat-card:hover::before { opacity: 1; }
-
     .feat-icon {
       width: 46px; height: 46px;
       border-radius: 10px;
@@ -431,7 +373,6 @@
       font-weight: 700;
       font-size: 18px;
       margin-bottom: 10px;
-      letter-spacing: -0.3px;
     }
     .feat-desc {
       font-size: 15px;
@@ -440,17 +381,13 @@
       line-height: 1.65;
     }
 
-    /* ── compare section ─────────────────────────────────── */
-    #compare {
-      background: var(--ink-2);
-    }
-
+    /* compare section */
+    #compare { background: var(--ink-2); }
     .compare-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 24px;
     }
-
     .compare-card {
       background: var(--ink-3);
       border: 1px solid var(--border);
@@ -470,7 +407,6 @@
     .compare-header.aplus { color: var(--accent); background: rgba(74,240,196,0.05); }
     .compare-header.python { color: #f9d044; background: rgba(249,208,68,0.05); }
     .compare-header.java   { color: #f97316; background: rgba(249,115,22,0.05); }
-
     .compare-body {
       padding: 20px 20px 20px 0;
       font-family: var(--mono);
@@ -484,16 +420,14 @@
       padding-right: 16px;
       color: var(--muted-2);
       font-size: 11px;
-      user-select: none;
     }
 
-    /* ── syntax reference ────────────────────────────────── */
+    /* syntax reference */
     .syntax-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
       gap: 20px;
     }
-
     .syntax-card {
       background: var(--ink-2);
       border: 1px solid var(--border);
@@ -505,7 +439,6 @@
       font-family: var(--display);
       font-size: 13px;
       font-weight: 700;
-      letter-spacing: 0.05em;
       text-transform: uppercase;
       color: var(--accent);
       border-bottom: 1px solid var(--border);
@@ -524,18 +457,15 @@
       padding-right: 14px;
       color: var(--muted-2);
       font-size: 11px;
-      user-select: none;
     }
 
-    /* ── IECE section ────────────────────────────────────── */
+    /* IECE section */
     .iece-demo {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 32px;
-      align-items: start;
       margin-top: 60px;
     }
-
     .iece-terminal {
       background: #0c1117;
       border: 1px solid var(--border);
@@ -543,30 +473,18 @@
       overflow: hidden;
       font-family: var(--mono);
       font-size: 13.5px;
-      line-height: 1.9;
     }
     .iece-terminal-bar {
       padding: 12px 16px;
       background: rgba(255,255,255,0.03);
       border-bottom: 1px solid var(--border);
       display: flex;
-      align-items: center;
       gap: 8px;
     }
-    .iece-terminal-title {
-      margin-left: 8px;
-      font-size: 12px;
-      color: var(--muted-2);
-    }
-    .iece-body { padding: 20px 20px; }
-
+    .iece-body { padding: 20px; }
     .t-prompt { color: var(--accent); }
-    .t-input  { color: var(--white); }
-    .t-info   { color: #4ade80; }
-    .t-warn   { color: #facc15; }
-    .t-err    { color: #f87171; }
-    .t-out    { color: var(--white-2); }
-
+    .t-info { color: #4ade80; }
+    .t-warn { color: #facc15; }
     .iece-features-list {
       list-style: none;
       display: flex;
@@ -579,8 +497,7 @@
       align-items: flex-start;
     }
     .iece-feature-icon {
-      width: 36px;
-      height: 36px;
+      width: 36px; height: 36px;
       border-radius: 8px;
       background: rgba(74,240,196,0.08);
       border: 1px solid rgba(74,240,196,0.15);
@@ -588,15 +505,12 @@
       align-items: center;
       justify-content: center;
       font-size: 16px;
-      flex-shrink: 0;
-      margin-top: 2px;
     }
     .iece-feature-text strong {
       display: block;
       font-family: var(--display);
       font-weight: 700;
       font-size: 15px;
-      margin-bottom: 3px;
     }
     .iece-feature-text span {
       font-size: 14px;
@@ -604,7 +518,7 @@
       font-weight: 300;
     }
 
-    /* ── download section ────────────────────────────────── */
+    /* download boxes */
     .download-box {
       background: var(--ink-2);
       padding: 25px;
@@ -612,9 +526,7 @@
       border: 1px solid var(--border);
       margin-top: 20px;
     }
-    .recommended {
-      border: 1px solid var(--accent);
-    }
+    .recommended { border: 1px solid var(--accent); }
     .btn-download {
       display: inline-block;
       margin-top: 15px;
@@ -624,13 +536,10 @@
       text-decoration: none;
       border-radius: 8px;
       font-weight: bold;
-      font-family: var(--display);
       transition: opacity 0.2s;
     }
     .btn-download:hover { opacity: 0.85; }
-    .versions-list {
-      margin-top: 20px;
-    }
+    .versions-list { margin-top: 20px; }
     .version-item {
       display: flex;
       justify-content: space-between;
@@ -641,22 +550,15 @@
       margin-bottom: 12px;
       border: 1px solid var(--border);
     }
-    .version-item.latest {
-      border-color: var(--accent);
-    }
-    .version-item a {
-      color: var(--accent);
-      text-decoration: none;
-      font-family: var(--mono);
-      font-size: 14px;
-    }
+    .version-item.latest { border-color: var(--accent); }
+    .version-item a { color: var(--accent); text-decoration: none; font-family: var(--mono); }
 
-    /* NEW: user manuals list style (same as versions) */
+    /* user manuals */
     .manuals-list {
-      margin-top: 20px;
       display: flex;
       flex-wrap: wrap;
       gap: 15px;
+      margin-top: 20px;
     }
     .manual-card {
       background: var(--ink-3);
@@ -671,11 +573,8 @@
       font-size: 14px;
     }
 
-    /* ── author ──────────────────────────────────────────── */
-    #author {
-      background: var(--ink-2);
-    }
-
+    /* author card */
+    #author { background: var(--ink-2); }
     .author-card {
       background: var(--ink-3);
       border: 1px solid var(--border);
@@ -696,10 +595,8 @@
       background: radial-gradient(circle at 80% 50%, rgba(74,240,196,0.06) 0%, transparent 60%);
       pointer-events: none;
     }
-
     .author-avatar {
-      width: 100px;
-      height: 100px;
+      width: 100px; height: 100px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
       display: flex;
@@ -709,10 +606,8 @@
       font-weight: 800;
       font-size: 36px;
       color: var(--ink);
-      flex-shrink: 0;
       box-shadow: 0 0 40px rgba(74,240,196,0.3);
     }
-
     .author-name {
       font-family: var(--display);
       font-weight: 800;
@@ -740,21 +635,6 @@
       gap: 12px;
       flex-wrap: wrap;
     }
-    .author-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 16px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      color: var(--white-2);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 400;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .author-link:hover { border-color: var(--accent); color: var(--accent); }
-
     .license-badge {
       display: inline-flex;
       align-items: center;
@@ -768,10 +648,8 @@
       padding: 6px 14px;
       border-radius: 100px;
       letter-spacing: 0.05em;
-      text-decoration: none;
     }
-
-    /* ── install section ─────────────────────────────────-- */
+    /* install section */
     .install-card {
       background: var(--ink-3);
       border: 1px solid var(--border);
@@ -790,7 +668,6 @@
       color: var(--muted);
       cursor: pointer;
       border-bottom: 2px solid transparent;
-      transition: color 0.2s, border-color 0.2s;
       background: none;
       border-top: none;
       border-left: none;
@@ -800,9 +677,7 @@
       color: var(--accent);
       border-bottom-color: var(--accent);
     }
-    .install-body {
-      padding: 24px 24px;
-    }
+    .install-body { padding: 24px; }
     .install-cmd {
       display: flex;
       align-items: center;
@@ -813,18 +688,8 @@
       padding: 14px 18px;
       margin-bottom: 12px;
     }
-    .install-cmd .prompt-sym {
-      color: var(--accent);
-      font-family: var(--mono);
-      font-size: 14px;
-      user-select: none;
-    }
-    .install-cmd .cmd-text {
-      font-family: var(--mono);
-      font-size: 14px;
-      color: var(--white);
-      flex: 1;
-    }
+    .install-cmd .prompt-sym { color: var(--accent); font-family: var(--mono); }
+    .install-cmd .cmd-text { font-family: var(--mono); font-size: 14px; color: var(--white); flex: 1; }
     .copy-btn {
       background: none;
       border: 1px solid var(--border);
@@ -833,12 +698,11 @@
       border-radius: 6px;
       cursor: pointer;
       font-size: 12px;
-      transition: border-color 0.2s, color 0.2s;
       font-family: var(--mono);
     }
     .copy-btn:hover { border-color: var(--accent); color: var(--accent); }
 
-    /* ── disclaimer ──────────────────────────────────────── */
+    /* disclaimer */
     .disclaimer {
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
@@ -854,23 +718,11 @@
       align-items: center;
       flex-wrap: wrap;
     }
-    .disclaimer-icon {
-      font-size: 28px;
-      opacity: 0.7;
-    }
-    .disclaimer-text {
-      color: var(--white-2);
-      line-height: 1.6;
-    }
-    .disclaimer-text strong {
-      color: var(--accent);
-      font-weight: 600;
-    }
-    @media (max-width: 700px) {
-      .disclaimer { padding: 20px 24px; }
-    }
+    .disclaimer-icon { font-size: 28px; opacity: 0.7; }
+    .disclaimer-text { color: var(--white-2); line-height: 1.6; }
+    .disclaimer-text strong { color: var(--accent); }
 
-    /* ── footer ──────────────────────────────────────────── */
+    /* footer */
     footer {
       border-top: 1px solid var(--border);
       padding: 40px 48px;
@@ -880,33 +732,19 @@
       flex-wrap: wrap;
       gap: 20px;
     }
-    .footer-left {
-      font-family: var(--display);
-      font-weight: 700;
-      font-size: 16px;
-      color: var(--muted);
-    }
+    .footer-left { font-family: var(--display); font-weight: 700; font-size: 16px; color: var(--muted); }
     .footer-left span { color: var(--accent); }
-    .footer-right {
-      font-size: 13px;
-      color: var(--muted-2);
-    }
-    .footer-right a { color: var(--muted); text-decoration: none; }
-    .footer-right a:hover { color: var(--white); }
+    .footer-right { font-size: 13px; color: var(--muted-2); }
 
-    /* ── scroll reveal ───────────────────────────────────── */
+    /* reveal animations */
     .reveal {
       opacity: 0;
       transform: translateY(28px);
-      transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1),
-                  transform 0.7s cubic-bezier(0.16,1,0.3,1);
+      transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: none;
-    }
+    .reveal.visible { opacity: 1; transform: none; }
 
-    /* ── responsive ──────────────────────────────────────── */
+    /* responsive */
     @media (max-width: 900px) {
       nav { padding: 16px 24px; }
       .nav-links { display: none; }
@@ -923,7 +761,6 @@
 </head>
 <body>
 
-<!-- ── NAV (UPDATED: added Development and Contact links) ── -->
 <nav>
   <a class="nav-logo" href="#"><span>A++</span> Language</a>
   <ul class="nav-links">
@@ -932,18 +769,16 @@
     <li><a href="#iece">IECE</a></li>
     <li><a href="#compare">Compare</a></li>
     <li><a href="#download">Download</a></li>
-    <li><a href="development.html">Development</a></li>      <!-- NEW -->
-    <li><a href="contact.html">Contact</a></li>              <!-- NEW -->
+    <li><a href="development.html">Development</a></li>
+    <li><a href="contact.html">Contact</a></li>
     <li><a href="#author">Author</a></li>
-    <li><a href="https://github.com/anandathirtha2009-art/aplus-language" class="nav-cta" target="_blank">GitHub ↗</a></li>
   </ul>
 </nav>
 
-<!-- ── HERO ───────────────────────────────────────────────── -->
+<!-- HERO -->
 <section class="hero">
   <div class="blob blob-1"></div>
   <div class="blob blob-2"></div>
-
   <div class="hero-inner">
     <div class="hero-left">
       <div class="hero-badge">v0.9 Prototype · MIT License · Open Source</div>
@@ -952,26 +787,18 @@
         <span class="line-accent">plain English.</span><br>
         <span class="line-dim">No symbols.</span>
       </h1>
-      <!-- NEW SLOGAN -->
       <div class="hero-slogan">“Anyone can code, but not everyone will code.”</div>
       <p class="hero-sub">
         A++ is a programming language where every statement reads like a sentence.
         No curly braces, no semicolons — just clear, natural words that execute like Python.
       </p>
       <div class="hero-buttons">
-        <a href="https://github.com/anandathirtha2009-art/aplus-language" class="btn-primary" target="_blank">⬡ View on GitHub</a>
         <a href="#syntax" class="btn-secondary">Explore Syntax →</a>
       </div>
     </div>
-
     <div class="hero-code-wrap reveal">
       <div class="code-window">
-        <div class="code-titlebar">
-          <div class="dot dot-r"></div>
-          <div class="dot dot-y"></div>
-          <div class="dot dot-g"></div>
-          <span class="code-filename">hello_world.aplus</span>
-        </div>
+        <div class="code-titlebar"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div><span class="code-filename">hello_world.aplus</span></div>
         <div class="code-body">
 <pre class="code-pre"><span class="ln">1</span><span class="cm">// A++ — Plain English code</span>
 <span class="ln">2</span>
@@ -996,7 +823,7 @@
   </div>
 </section>
 
-<!-- ── STATS ──────────────────────────────────────────────── -->
+<!-- STATS -->
 <div class="stats-strip">
   <div class="stats-inner">
     <div class="stat reveal"><div class="stat-num">6</div><div class="stat-label">Language Phases</div></div>
@@ -1007,7 +834,7 @@
   </div>
 </div>
 
-<!-- ── FEATURES ───────────────────────────────────────────── -->
+<!-- FEATURES -->
 <section id="features">
   <div class="section-inner">
     <p class="section-tag reveal">Why A++</p>
@@ -1026,7 +853,7 @@
   </div>
 </section>
 
-<!-- ── SYNTAX REFERENCE ───────────────────────────────────── -->
+<!-- SYNTAX REFERENCE -->
 <section id="syntax" style="background: var(--ink-2);">
   <div class="section-inner">
     <p class="section-tag reveal">Syntax Reference</p>
@@ -1043,7 +870,7 @@
   </div>
 </section>
 
-<!-- ── IECE ────────────────────────────────────────────────── -->
+<!-- IECE -->
 <section id="iece">
   <div class="section-inner">
     <p class="section-tag reveal">IECE v3</p>
@@ -1085,7 +912,7 @@
   </div>
 </section>
 
-<!-- ── COMPARE ────────────────────────────────────────────── -->
+<!-- COMPARE -->
 <section id="compare" style="background: var(--ink-2);">
   <div class="section-inner">
     <p class="section-tag reveal">Comparison</p>
@@ -1100,7 +927,7 @@
   </div>
 </section>
 
-<!-- ── INSTALL ─────────────────────────────────────────────── -->
+<!-- INSTALL -->
 <section id="install">
   <div class="section-inner">
     <p class="section-tag reveal">Get Started</p>
@@ -1131,25 +958,22 @@
   </div>
 </section>
 
-<!-- ── DOWNLOAD SECTION (extended with User Manuals) ──────── -->
+<!-- DOWNLOAD -->
 <section id="download">
   <div class="section-inner">
     <p class="section-tag reveal">Download</p>
     <h2 class="section-title reveal">Get A++ for your machine.</h2>
     <p class="section-sub reveal">Choose the version that fits your needs. All releases are MIT licensed.</p>
-    <div id="recommended-box" class="download-box recommended" style="display: none;"><!-- filled by script --></div>
+    <div id="recommended-box" class="download-box recommended" style="display: none;"></div>
     <h3 style="margin-top: 40px;">📦 All Versions</h3>
     <div id="versions-list" class="versions-list"></div>
-
-    <!-- NEW: User Manuals section -->
     <h3 style="margin-top: 40px;">📘 User Manuals</h3>
     <div id="manuals-list" class="manuals-list"></div>
-
     <p style="margin-top: 24px; font-size: 13px; color: var(--muted);">⬇️ All downloads are <code>.zip</code> archives containing the full interpreter and documentation.</p>
   </div>
 </section>
 
-<!-- ── AUTHOR ──────────────────────────────────────────────── -->
+<!-- AUTHOR -->
 <section id="author" style="background: var(--ink-2);">
   <div class="section-inner">
     <p class="section-tag reveal">About the Creator</p>
@@ -1160,13 +984,15 @@
         <div class="author-name">Vishnu Theertha. A</div>
         <div class="author-location"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Bengaluru, Karnataka, India</div>
         <p class="author-bio">Creator of A++ — a plain-English programming language designed to make coding accessible to anyone who can write a sentence. The project started from a simple question: <em>why should beginners need to learn a foreign syntax before they can learn to think like a programmer?</em></p>
-        <div class="author-links"><a href="https://github.com/anandathirtha2009-art/aplus-language" class="author-link" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58l-.02-2.03c-3.34.72-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02 0 2.04.14 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.92.43.37.81 1.1.81 2.22l-.02 3.29c0 .32.22.7.83.58A12 12 0 0024 12C24 5.37 18.63 0 12 0z"/></svg> GitHub</a><a href="https://github.com/anandathirtha2009-art/aplus-language/blob/main/LICENSE" class="license-badge" target="_blank">📄 MIT License</a></div>
+        <div class="author-links">
+          <span class="license-badge">📄 MIT License</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── DISCLAIMER ──────────────────────────────────────────── -->
+<!-- DISCLAIMER -->
 <div class="disclaimer">
   <div class="disclaimer-inner">
     <div class="disclaimer-icon">⚠️</div>
@@ -1179,10 +1005,10 @@
   </div>
 </div>
 
-<!-- ── FOOTER ──────────────────────────────────────────────── -->
+<!-- FOOTER -->
 <footer>
   <div class="footer-left"><span>A++</span> Programming Language</div>
-  <div class="footer-right">© 2026 <a href="https://github.com/anandathirtha2009-art">Vishnu Theertha. A</a> · Bengaluru, India · <a href="https://github.com/anandathirtha2009-art/aplus-language/blob/main/LICENSE" target="_blank">MIT License</a> · <a href="https://github.com/anandathirtha2009-art/aplus-language" target="_blank">Source on GitHub</a></div>
+  <div class="footer-right">© 2026 Vishnu Theertha. A · Bengaluru, India · MIT License</div>
 </footer>
 
 <script>
@@ -1231,7 +1057,7 @@
 
   // Auto download system for versions
   const files = [
-      "aplus-recommended-v1.3.0.zip",
+    "aplus-recommended-v1.3.0.zip",
     "aplus-latest-v1.3.0.zip",
     "aplus-v1.1.0.zip",
     "aplus-v1.0.0.zip"
@@ -1254,40 +1080,21 @@
     listBox.appendChild(div);
   }
 
-  // User manuals – tries to fetch from PHP, else uses a static array (empty by default)
+  // User manuals – static fallback (edit array as needed)
   const manualsContainer = document.getElementById('manuals-list');
-  fetch('list-manuals.php')
-    .then(response => {
-      if (!response.ok) throw new Error('No PHP endpoint');
-      return response.json();
-    })
-    .then(files => {
-      if (files.length === 0) {
-        manualsContainer.innerHTML = '<p style="color: var(--muted);">No user manuals uploaded yet.</p>';
-      } else {
-        manualsContainer.innerHTML = '';
-        files.forEach(file => {
-          const card = document.createElement('div');
-          card.className = 'manual-card';
-          card.innerHTML = `<a href="downloads/${encodeURIComponent(file)}" download>${file}</a>`;
-          manualsContainer.appendChild(card);
-        });
-      }
-    })
-    .catch(() => {
-      // Static fallback – edit this array when you add PDFs
-      const fallbackManuals = ["user-manual-v1.3.pdf"];   // Example: ["user-manual-v1.3.pdf"]
-      if (fallbackManuals.length === 0) {
-        manualsContainer.innerHTML = '<p style="color: var(--muted);">User manuals will appear here automatically when you add PDFs.</p>';
-      } else {
-        fallbackManuals.forEach(file => {
-          const card = document.createElement('div');
-          card.className = 'manual-card';
-          card.innerHTML = `<a href="downloads/${file}" download>${file}</a>`;
-          manualsContainer.appendChild(card);
-        });
-      }
+  const fallbackManuals = [
+     "user-manual-v1.3.pdf"
+  ];
+  if (fallbackManuals.length === 0) {
+    manualsContainer.innerHTML = '<p style="color: var(--muted);">User manuals will appear here when PDFs are added.</p>';
+  } else {
+    fallbackManuals.forEach(file => {
+      const card = document.createElement('div');
+      card.className = 'manual-card';
+      card.innerHTML = `<a href="downloads/${file}" download>${file}</a>`;
+      manualsContainer.appendChild(card);
     });
+  }
 </script>
 </body>
 </html>
